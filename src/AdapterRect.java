@@ -3,10 +3,9 @@ package src;
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class AdapterRect extends JPanel {
+public class AdapterRect {
 
-    @Override
-    public void paintComponent(Graphics graphic){
+    public void drawRect(Graphics graphic){
 
     }
     

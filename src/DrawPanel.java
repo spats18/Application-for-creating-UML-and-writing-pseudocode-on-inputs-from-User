@@ -13,7 +13,7 @@ public class DrawPanel extends JPanel {//extends Observable
         return panel;
     }
 
-    public void decideAlgo(float x, float y){
+    public void decideAlgo(int x, int y){
         boolean inVicinity = SingletonDataSrc.inBoxVicinity(x, y);
         Strategy strategy;
         if(inVicinity){
@@ -23,13 +23,15 @@ public class DrawPanel extends JPanel {//extends Observable
         }else{
             //box
             strategy = new StrategyBox();
-
+            super.repaint();
         }
     }
     @Override
     public void paintComponent(Graphics graphic){
         int[] coords = SingletonDataSrc.coordinates.getLast();
-        graphic.fillRect(coords[0], coords[1], 50, 30);
+        int x = coords[0] - (SingletonDataSrc.WIDTH);
+        int y = coords[1] - (SingletonDataSrc.HEIGHT);
+        graphic.fillRect(x, y, 2 * SingletonDataSrc.WIDTH, 2 * SingletonDataSrc.HEIGHT);
         graphic.setColor(Color.yellow);
     }
 }

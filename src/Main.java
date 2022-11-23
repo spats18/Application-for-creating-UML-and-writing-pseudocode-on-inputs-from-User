@@ -13,8 +13,8 @@ import java.awt.event.MouseEvent;
  * 
  */
 class Main extends JFrame implements MouseListener{
-    // static RandomNumbers rndNum;
-    // static PlotPanel[] panels = new PlotPanel[3];
+    static CodePanel cp;
+    static DrawPanel dp;
     
     /**
      * main method is the driver method to start the plotting of points.
@@ -36,10 +36,13 @@ class Main extends JFrame implements MouseListener{
         right.setBorder(BorderFactory.createLineBorder(Color.black));
         add(right);
 
-        CodePanel dp2 = new CodePanel();
-        right.add(dp2.getPanel());
-        DrawPanel dp = new DrawPanel();
+        cp = new CodePanel();
+        dp = new DrawPanel();
+        
+        right.add(cp.getPanel());
         right.add(dp.getPanel());
+
+        dp.addMouseListener(this);
     }
 
     /**
@@ -50,8 +53,10 @@ class Main extends JFrame implements MouseListener{
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        //rndNum.setNumber();
-		repaint();
+        int x = e.getX();
+        int y = e.getY();
+        dp.decideAlgo(x,y);
+        System.out.println(x+","+y);
     }
 
     @Override

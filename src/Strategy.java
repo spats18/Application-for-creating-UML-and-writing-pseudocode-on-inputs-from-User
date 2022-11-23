@@ -2,6 +2,8 @@ package src;
 
 import java.util.List;
 
-interface Strategy {
-    public void algorithm(List<Integer> coordinates);
+class Strategy extends Observable{
+    String choice;
+    public void algorithm(List<Integer> coordinates){
+    }
 }

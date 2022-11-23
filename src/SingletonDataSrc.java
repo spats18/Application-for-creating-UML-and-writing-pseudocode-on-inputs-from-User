@@ -1,13 +1,12 @@
 package src;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class SingletonDataSrc {
     private static SingletonDataSrc instance;
     static LinkedList<int[]> coordinates;
-    static float boxHeight = 15;
-    static float boxWidth = 25;
+    static final int HEIGHT = 15;
+    static final int WIDTH = 25;
     private SingletonDataSrc(){
        
     }
@@ -18,13 +17,11 @@ public class SingletonDataSrc {
         return instance;
     }
 
-    public static boolean inBoxVicinity(float fx, float fy){
-        int x = (int) Math.floor(fx);
-        int y = (int) Math.floor(fy);
+    public static boolean inBoxVicinity(int x, int y){
         for(int[] coord : coordinates){
             float ox = coord[0];
             float oy = coord[1];
-            if((x <=  ox + boxWidth && x >= ox - boxWidth) && (y <=  oy + boxHeight && y >= oy - boxHeight)){
+            if((x <=  ox + WIDTH && x >= ox - WIDTH) && (y <=  oy + HEIGHT && y >= oy - HEIGHT)){
                 return true;
             }
         }
