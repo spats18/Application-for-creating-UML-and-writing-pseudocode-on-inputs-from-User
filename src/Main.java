@@ -3,8 +3,6 @@ package src;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.event.MouseEvent;
 
 /**
@@ -15,7 +13,7 @@ import java.awt.event.MouseEvent;
 class Main extends JFrame implements MouseListener{
     static CodePanel cp;
     static DrawPanel dp;
-    
+    static JFrame frame;
     /**
      * main method is the driver method to start the plotting of points.
      */
@@ -55,7 +53,7 @@ class Main extends JFrame implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        dp.decideAlgo(x,y);
+        //dp.decideAlgo(x,y);
         System.out.println(x+","+y);
     }
 

@@ -1,5 +1,6 @@
 package src;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -13,11 +14,14 @@ public class CodePanel implements Observer{
     }
     JPanel panel;
     CodePanel(){
-        panel = new JPanel(new GridLayout(1,1,0,0));
-        // JScrollPane scrollPane = new JScrollPane(panel); 
-        // scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        // scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        // scrollPane.setBounds(50, 30, 300, 50);
+        panel = new JPanel();//new JPanel(new GridLayout(1,1,0,0));
+        panel.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel.setBackground(Color.gray);
+        JScrollPane scrollPane = new JScrollPane(); 
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setSize(300, 500);
+        panel.add(scrollPane, BorderLayout.CENTER);
     }
     public JPanel getPanel(){
         return panel;

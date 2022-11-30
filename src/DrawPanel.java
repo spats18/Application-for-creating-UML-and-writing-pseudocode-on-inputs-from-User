@@ -3,10 +3,11 @@ package src;
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class DrawPanel extends JPanel {//extends Observable
+public class DrawPanel extends JPanel  {//extends Observable
     JPanel panel;
+    Strategy strategy;
     DrawPanel(){
-        panel = new JPanel(new GridLayout(1,1,0,0)); 
+        panel = new JPanel(); //new JPanel(new GridLayout(1,1,0,0)); 
         panel.setBackground(Color.cyan);
     }
     public JPanel getPanel(){
@@ -15,7 +16,7 @@ public class DrawPanel extends JPanel {//extends Observable
 
     public void decideAlgo(int x, int y){
         boolean inVicinity = SingletonDataSrc.inBoxVicinity(x, y);
-        Strategy strategy;
+        
         if(inVicinity){
             //line
             strategy = new StrategyLine();

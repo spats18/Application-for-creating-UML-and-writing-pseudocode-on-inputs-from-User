@@ -13,18 +13,20 @@ public class SingletonDataSrc {
     public static SingletonDataSrc getInstance(){
         if(instance == null){
             instance = new SingletonDataSrc();
+            coordinates = new LinkedList<>();
         }
         return instance;
     }
 
     public static boolean inBoxVicinity(int x, int y){
-        for(int[] coord : coordinates){
-            float ox = coord[0];
-            float oy = coord[1];
-            if((x <=  ox + WIDTH && x >= ox - WIDTH) && (y <=  oy + HEIGHT && y >= oy - HEIGHT)){
-                return true;
+        if(coordinates.size()>0)
+            for(int[] coord : coordinates){
+                float ox = coord[0];
+                float oy = coord[1];
+                if((x <=  ox + WIDTH && x >= ox - WIDTH) && (y <=  oy + HEIGHT && y >= oy - HEIGHT)){
+                    return true;
+                }
             }
-        }
         coordinates.add(new int[]{x,y});
         return false;
     }
