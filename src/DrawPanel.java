@@ -1,17 +1,20 @@
 package src;
 
 import javax.swing.JPanel;
+
+
 import java.awt.*;
 
 public class DrawPanel extends JPanel  {//extends Observable
-    JPanel panel;
     Strategy strategy;
+
     DrawPanel(){
-        panel = new JPanel(); //new JPanel(new GridLayout(1,1,0,0)); 
-        panel.setBackground(Color.cyan);
+        setBackground(Color.cyan);
+        SingletonDataSrc.getInstance();
     }
+
     public JPanel getPanel(){
-        return panel;
+        return this;
     }
 
     public void decideAlgo(int x, int y){
@@ -20,19 +23,25 @@ public class DrawPanel extends JPanel  {//extends Observable
         if(inVicinity){
             //line
             strategy = new StrategyLine();
-
+            
         }else{
             //box
             strategy = new StrategyBox();
-            super.repaint();
+            repaint();
+            System.out.println("BOX");
         }
     }
     @Override
     public void paintComponent(Graphics graphic){
-        int[] coords = SingletonDataSrc.coordinates.getLast();
-        int x = coords[0] - (SingletonDataSrc.WIDTH);
-        int y = coords[1] - (SingletonDataSrc.HEIGHT);
-        graphic.fillRect(x, y, 2 * SingletonDataSrc.WIDTH, 2 * SingletonDataSrc.HEIGHT);
-        graphic.setColor(Color.yellow);
+        super.paintComponent(graphic);
+        for (int i = 0; i < SingletonDataSrc.coordinates.size(); i++)
+        {
+            int[] coords = SingletonDataSrc.coordinates.get(i);
+            int x = coords[0] - (SingletonDataSrc.WIDTH);
+            int y = coords[1] - (SingletonDataSrc.HEIGHT);
+            graphic.setColor(Color.yellow);
+            graphic.fillRect(x, y, 2 * SingletonDataSrc.WIDTH, 2 * SingletonDataSrc.HEIGHT);
+
+        }
     }
 }

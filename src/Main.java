@@ -30,17 +30,30 @@ class Main extends JFrame implements MouseListener{
      * and will plot the points on the frame with decorations and mean value.
      */
     public Main(){
-        JPanel right = new JPanel(new GridLayout(1,2,10,0));
-        right.setBorder(BorderFactory.createLineBorder(Color.black));
-        add(right);
+        JPanel root = new JPanel (new BorderLayout(10,10));
+        root.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        JPanel topPanel = new JPanel(new FlowLayout());        
+        Button fileButton = new Button ("File");
+        Button helpButton = new Button ("Help");
+        topPanel.add(fileButton);
+        topPanel.add(helpButton);
+
+        JPanel midPanel = new JPanel(new GridLayout(1,2,10,0));
 
         cp = new CodePanel();
-        dp = new DrawPanel();
-        
-        right.add(cp.getPanel());
-        right.add(dp.getPanel());
-
+        cp.addMouseListener(this);
+        dp = new DrawPanel(); 
         dp.addMouseListener(this);
+        
+        midPanel.add(cp.getPanel()); //component 0
+        midPanel.add(dp.getPanel()); //component 1
+        
+        
+        root.add(topPanel, BorderLayout.PAGE_START);
+        root.add(midPanel, BorderLayout.CENTER);
+        add(root);
+        setVisible(true);
     }
 
     /**
@@ -53,8 +66,20 @@ class Main extends JFrame implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        //dp.decideAlgo(x,y);
-        System.out.println(x+","+y);
+        // //dp.decideAlgo(x,y);
+        // System.out.println(x+","+y);   
+
+        if (e.getSource() == dp.getPanel())
+        {
+            System.out.println("At Draw Panel");
+            dp.decideAlgo(x, y);
+            
+
+        }
+        else if (e.getSource() == cp.getPanel())
+        {
+            System.out.println("At Code Panel");
+        }
     }
 
     @Override
