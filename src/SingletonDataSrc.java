@@ -6,7 +6,7 @@ public class SingletonDataSrc {
     private static SingletonDataSrc instance;
     static LinkedList<int[]> coordinates;
     static LinkedList<int[]> lineCoordinates;
-    static LinkedList<String> CodePanelData;
+    static LinkedList<String> classList;
     static final int HEIGHT = 15;
     static final int WIDTH = 25;
     static String status;
@@ -68,6 +68,11 @@ public class SingletonDataSrc {
             }
         coordinates.add(new int[]{x,y});
         return false;
+    }
+
+    public static void insertClass(String className)
+    {
+
     }
 
 }

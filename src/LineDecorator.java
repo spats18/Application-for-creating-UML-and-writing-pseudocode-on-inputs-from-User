@@ -1,4 +1,5 @@
 package src;
+import java.awt.*;
 
 public abstract class LineDecorator implements Line {
 
@@ -8,9 +9,9 @@ public abstract class LineDecorator implements Line {
         this.line = line;
     }
     @Override
-    public void operation() {
+    public void operation(Graphics g) {
        if(line !=null){
-        line.operation();
+        line.operation(g);
        }
     }
     
