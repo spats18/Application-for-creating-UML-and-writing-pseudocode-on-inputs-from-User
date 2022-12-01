@@ -30,8 +30,9 @@ public class DrawPanel extends JPanel  {//extends Observable
             
         }else{
             //box
-            //strategy = new StrategyBox(this);
-            repaint();
+            strategy = new StrategyBox(this);
+            strategy.algorithm();
+            //repaint();
 
             System.out.print(choice);
 

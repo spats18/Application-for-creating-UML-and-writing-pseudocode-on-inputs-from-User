@@ -8,5 +8,6 @@ public class Strategy extends Observable{
         this.panel = panel;
     }
     public void algorithm(){
+        panel.repaint();
     }
 }
