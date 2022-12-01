@@ -6,6 +6,7 @@ public class SingletonDataSrc {
     private static SingletonDataSrc instance;
     static LinkedList<int[]> coordinates;
     static LinkedList<int[]> lineCoordinates;
+    static LinkedList<String> CodePanelData;
     static final int HEIGHT = 15;
     static final int WIDTH = 25;
     static String status;
