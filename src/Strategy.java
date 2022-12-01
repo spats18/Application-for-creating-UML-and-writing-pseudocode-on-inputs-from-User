@@ -1,9 +1,12 @@
 package src;
 
-import java.util.List;
 
-class Strategy extends Observable{
+public class Strategy extends Observable{
     String choice;
-    public void algorithm(List<Integer> coordinates){
+    DrawPanel panel;
+    Strategy(DrawPanel panel){
+        this.panel = panel;
+    }
+    public void algorithm(){
     }
 }

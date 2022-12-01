@@ -1,12 +1,10 @@
 package src;
 import java.awt.*;
-import java.util.*;
 
 public class LineConcrete implements Line {
 
     @Override
     public void operation(Graphics g) {
-        // TODO Auto-generated method stub
         for (int i = 0; i < SingletonDataSrc.lineCoordinates.size(); i++)
         {
             int[] coords = SingletonDataSrc.lineCoordinates.get(i);
@@ -16,7 +14,6 @@ public class LineConcrete implements Line {
             int y2 = coords[3] ;
             g.setColor(Color.white);
             g.drawLine(x1, y1, x2, y2);
-
         }
         
     }

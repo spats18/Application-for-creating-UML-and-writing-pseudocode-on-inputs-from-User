@@ -1,15 +1,15 @@
 package src;
 
-import java.util.List;
 
 public class StrategyBox extends Strategy{
 
+    public StrategyBox(DrawPanel drawPanel) {
+        super(drawPanel);
+    }
     @Override
-    public void algorithm(List<Integer> coordinates) {
-        super.notifying();
+    public void algorithm() {
+        panel.repaint();
     }
-    public String chosen(){
-        return choice;
-    }
-    
+
+
 }

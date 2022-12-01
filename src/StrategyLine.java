@@ -1,15 +1,23 @@
 package src;
 
-import java.util.List;
-
 public class StrategyLine extends Strategy{
 
+    public StrategyLine(DrawPanel drawPanel) {
+        super(drawPanel);
+    }
+
     @Override
-    public void algorithm(List<Integer> coordinates) {
-        super.notifying();
+    public void algorithm() {
+        panel.repaint();
     }
-    public String chosen(){
-        return choice;
+    public Line drawlines(String choice) {
+        Line line = new LineConcrete();
+        ChainHandler chainHandler1 = new ChainHandlerTriangle();
+        ChainHandler chainHandler2 = new ChainHandlerDiamond();
+        ChainHandler chainHandler3 = new ChainHandlerArrow();
+        chainHandler1.setSuccessor(chainHandler2);
+        chainHandler2.setSuccessor(chainHandler3);
+        Line decoratedLine = chainHandler1.handler(line ,choice);
+        return decoratedLine;
     }
-    
 }

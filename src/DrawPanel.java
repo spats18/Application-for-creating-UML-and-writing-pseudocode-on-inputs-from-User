@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class DrawPanel extends JPanel  {//extends Observable
     Strategy strategy;
+    Line line;
 
     DrawPanel(){
         setBackground(Color.cyan);
@@ -17,21 +18,22 @@ public class DrawPanel extends JPanel  {//extends Observable
     public JPanel getPanel(){
         return this;
     }
-
-    public void decideAlgo(int x, int y){
+    public void decideAlgo(int x, int y, String choice){
         boolean inVicinity = SingletonDataSrc.inBoxVicinity(x, y);
         
         if(inVicinity){
-            //line
-            strategy = new StrategyLine();
+            //strategy = new StrategyLine(this);
             SingletonDataSrc.addLine(x, y);
+            strategy.algorithm();
             repaint();
             SingletonDataSrc.status = "New Line Added!";
             
         }else{
             //box
-            strategy = new StrategyBox();
+            //strategy = new StrategyBox(this);
             repaint();
+
+            System.out.print(choice);
 
             String className = JOptionPane.showInputDialog("Enter Class Name"); //<----- Get user input for class name here
             if (className == null || className.length() < 1)
@@ -42,7 +44,8 @@ public class DrawPanel extends JPanel  {//extends Observable
             System.out.print(className);
         }
     }
-    @Override
+
+       @Override
     public void paintComponent(Graphics graphic){
         super.paintComponent(graphic);
         System.out.println("Updating Graphics...");
@@ -59,7 +62,6 @@ public class DrawPanel extends JPanel  {//extends Observable
             int y = coords[1] - (SingletonDataSrc.HEIGHT);
             g.setColor(Color.yellow);
             g.fillRect(x, y, 2 * SingletonDataSrc.WIDTH, 2 * SingletonDataSrc.HEIGHT);
-
         }
     }
 }

@@ -6,7 +6,7 @@ public class LineDecoDiamond extends LineDecorator{
     @Override
     public void operation(Graphics g){
         super.operation(g);
-        //add code
+        //g.fillPolygon(Array of X points, Array of Y points);
     }
 
 }

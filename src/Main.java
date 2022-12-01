@@ -82,9 +82,7 @@ class Main extends JFrame implements MouseListener{
         if (e.getSource() == dp.getPanel())
         {
             System.out.println("At Draw Panel");
-            dp.decideAlgo(x, y);
-            
-
+            dp.decideAlgo(x, y,"in box strategy");
         }
         else if (e.getSource() == cp.getPanel())
         {
