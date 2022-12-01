@@ -13,11 +13,17 @@ import java.awt.event.MouseEvent;
 class Main extends JFrame implements MouseListener{
     static CodePanel cp;
     static DrawPanel dp;
-    static JFrame frame;
+    JPanel root;
+    JPanel topPanel;
+    JPanel midPanel;
+    JTextPane bottomPanel;
+
     /**
      * main method is the driver method to start the plotting of points.
      */
     public static void main(String args[]){
+        SingletonDataSrc.getInstance();
+        SingletonRadioMenu.getInstance();
         Main main = new Main();
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setSize(1000,800);
@@ -30,16 +36,17 @@ class Main extends JFrame implements MouseListener{
      * and will plot the points on the frame with decorations and mean value.
      */
     public Main(){
-        JPanel root = new JPanel (new BorderLayout(10,10));
+        super("CSE564 Final Project");
+        root = new JPanel (new BorderLayout(10,10));
         root.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        JPanel topPanel = new JPanel(new FlowLayout());        
+        topPanel = new JPanel(new FlowLayout());        
         Button fileButton = new Button ("File");
         Button helpButton = new Button ("Help");
         topPanel.add(fileButton);
         topPanel.add(helpButton);
 
-        JPanel midPanel = new JPanel(new GridLayout(1,2,10,0));
+        midPanel = new JPanel(new GridLayout(1,2,10,0));
 
         cp = new CodePanel();
         cp.addMouseListener(this);
@@ -49,9 +56,12 @@ class Main extends JFrame implements MouseListener{
         midPanel.add(cp.getPanel()); //component 0
         midPanel.add(dp.getPanel()); //component 1
         
+        bottomPanel = new JTextPane();
+        bottomPanel.setText(SingletonDataSrc.status);
         
         root.add(topPanel, BorderLayout.PAGE_START);
         root.add(midPanel, BorderLayout.CENTER);
+        root.add(bottomPanel, BorderLayout.PAGE_END);
         add(root);
         setVisible(true);
     }
@@ -80,25 +90,27 @@ class Main extends JFrame implements MouseListener{
         {
             System.out.println("At Code Panel");
         }
+        bottomPanel.setText(SingletonDataSrc.status);
     }
-
+    
     @Override
     public void mousePressed(MouseEvent e) {
-
+        
     }
-
+    
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        
     }
-
+    
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        
     }
-
+    
     @Override
     public void mouseExited(MouseEvent e) {
-
+        
     }
+    
 }
