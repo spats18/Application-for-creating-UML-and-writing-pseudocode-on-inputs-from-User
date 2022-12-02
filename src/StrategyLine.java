@@ -15,7 +15,7 @@ public class StrategyLine extends Strategy{
             this.xh = x2;
             this.yh = y2;
         }else{
-            boxDirection = 0;
+            boxDirection = -1;
             this.xl = x2;
             this.yl = y2;
             this.xh = x1;

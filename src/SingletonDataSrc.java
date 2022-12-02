@@ -49,22 +49,22 @@ public class SingletonDataSrc extends Observable{
     public static void addLine(int x1, int y1, int x2, int y2) {
         relation.add(new int[]{x1,y1,x2,y2});
     }
-    public static void addDiamonds(int x, int y) {
+    public static void addDiamonds(int x, int y, int boxDirection) {
         if(diamonds == null)
             diamonds = new LinkedList<>();
-        diamonds.add(new int[]{x,y});
+        diamonds.add(new int[]{x,y,boxDirection});
         instance.notifying();
     }
-    public static void addArrows(int x, int y) {
+    public static void addArrows(int x, int y, int boxDirection) {
         if(arrows == null)
             arrows = new LinkedList<>();
-        arrows.add(new int[]{x,y});
+        arrows.add(new int[]{x,y,boxDirection});
         instance.notifying();
     }
-    public static void addTriangles(int x, int y) {
+    public static void addTriangles(int x, int y, int boxDirection) {
         if(triangles == null)
             triangles = new LinkedList<>();
-        triangles.add(new int[]{x,y});
+        triangles.add(new int[]{x,y,boxDirection});
         instance.notifying();
     }
     public static void addClassList(String str, ArrayList<String> toAdd ) {
