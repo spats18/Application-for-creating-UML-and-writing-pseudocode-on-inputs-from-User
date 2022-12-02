@@ -5,13 +5,12 @@ import javax.swing.JPanel;
 
 import java.awt.*;
 
-public class DrawPanel extends JPanel implements Observer {//extends Observable
+public class DrawPanel extends JPanel implements Observer {
  
     Line line;
 
     DrawPanel(){
         setBackground(Color.cyan);
-        SingletonDataSrc.getInstance();
     }
 
     public JPanel getPanel(){
@@ -20,7 +19,6 @@ public class DrawPanel extends JPanel implements Observer {//extends Observable
     @Override
     public void paintComponent(Graphics graphic){
         super.paintComponent(graphic);
-        System.out.println("Updating Graphics...");
         drawRectangles(graphic);
         drawLines(graphic);
         drawTriangles(graphic);
@@ -86,7 +84,6 @@ public class DrawPanel extends JPanel implements Observer {//extends Observable
     private void drawRectangles(Graphics graphic){
         if(SingletonDataSrc.boxes == null)
             return;
-        System.out.println("Drawing Boxes");
         for (String key : SingletonDataSrc.boxes.keySet())
         {
             int[] coords = SingletonDataSrc.boxes.get(key);

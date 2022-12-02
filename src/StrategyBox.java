@@ -12,7 +12,7 @@ public class StrategyBox extends Strategy{
         this.xl = x1;
         this.yl = y1;
         this.getChoice();
-        SingletonDataSrc.status = "Class " + choice + " Added!";
+        SingletonDataSrc.updateStatus("Class " + choice + " Added!");
         SingletonDataSrc.setClassName(choice, xl, yl);
         ArrayList<String> toAdd = new ArrayList<>(Arrays.asList(new String[]{"Class "+ choice +" {", "}"}));
         SingletonDataSrc.addClassList(choice, toAdd);
@@ -22,6 +22,6 @@ public class StrategyBox extends Strategy{
     public void getChoice(){
         choice = JOptionPane.showInputDialog("Enter Class Name");
         if (choice == null || choice.length() == 0)
-            choice = "Class" + SingletonDataSrc.boxes.size();
+            choice = "class" + SingletonDataSrc.boxes.size();
     }
 }

@@ -15,6 +15,7 @@ public class SingletonDataSrc extends Observable{
     static String status;
     static int countAssociation;
     static int countComposition;
+    
     private SingletonDataSrc(){
        
     }
@@ -82,6 +83,10 @@ public class SingletonDataSrc extends Observable{
         if(classList == null)
             classList = new HashMap<>();
         classList.put(str, toAdd);
+        instance.notifying();
+    }
+    public static void updateStatus(String str) {
+        status = new String(str);
         instance.notifying();
     }
 }
