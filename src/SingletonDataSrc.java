@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class SingletonDataSrc extends Observable implements Serializable{
     private static SingletonDataSrc instance;
     //private static final String filepath="/Users/spats/Documents/GitHub/Final-Project-564";
@@ -20,7 +22,7 @@ public class SingletonDataSrc extends Observable implements Serializable{
     String status;
     int countAssociation;
     int countComposition;
-    static int fileCount;
+    //static int fileCount;
     
     private SingletonDataSrc(){
        
@@ -108,7 +110,7 @@ public class SingletonDataSrc extends Observable implements Serializable{
     }
     private static void WriteObjectToFile(SingletonDataSrc serObj) throws FileNotFoundException {
         try {
-            String Name = "File"+ ++fileCount;
+            String Name = JOptionPane.showInputDialog("Enter File Name");
             FileOutputStream fileOut = new FileOutputStream(Name+".dat");
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(serObj);
