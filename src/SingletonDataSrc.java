@@ -49,22 +49,22 @@ public class SingletonDataSrc extends Observable{
     public static void addLine(int x1, int y1, int x2, int y2) {
         relation.add(new int[]{x1,y1,x2,y2});
     }
-    public static void addDiamonds(int x, int y, int boxDirection) {
+    public static void addDiamonds(int x, int y, int boxDirection, int slope, int yIntercept) {
         if(diamonds == null)
             diamonds = new LinkedList<>();
-        diamonds.add(new int[]{x,y,boxDirection});
+        diamonds.add(new int[]{x,y,boxDirection, slope, yIntercept});
         instance.notifying();
     }
-    public static void addArrows(int x, int y, int boxDirection) {
+    public static void addArrows(int x, int y, int boxDirection,int slope, int yIntercept) {
         if(arrows == null)
             arrows = new LinkedList<>();
-        arrows.add(new int[]{x,y,boxDirection});
+        arrows.add(new int[]{x,y,boxDirection, slope, yIntercept});
         instance.notifying();
     }
-    public static void addTriangles(int x, int y, int boxDirection) {
+    public static void addTriangles(int x, int y, int boxDirection, int slope, int yIntercept) {
         if(triangles == null)
             triangles = new LinkedList<>();
-        triangles.add(new int[]{x,y,boxDirection});
+        triangles.add(new int[]{x,y,boxDirection,slope, yIntercept});
         instance.notifying();
     }
     public static void addClassList(String str, ArrayList<String> toAdd ) {
@@ -82,5 +82,7 @@ public class SingletonDataSrc extends Observable{
     public static void updateStatus(String str) {
         status = new String(str);
         instance.notifying();
+    }
+    public static void addArrows(int x2, int y2, int boxDirection, float slope, float yIntercept) {
     }
 }

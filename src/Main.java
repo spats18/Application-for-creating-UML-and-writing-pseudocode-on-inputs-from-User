@@ -6,7 +6,6 @@ import java.awt.*;
 /**
  * The main class is the driver class. 
  * It will plot the points on the frame with decorations and mean value.
- * 
  */
 
 class Main extends JFrame{
@@ -49,12 +48,6 @@ class Main extends JFrame{
 
         root = new JPanel (new BorderLayout(5,5));
         root.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        
-        // topPanel = new JPanel(new FlowLayout());        
-        // Button fileButton = new Button ("File");
-        // Button helpButton = new Button ("Help");
-        // topPanel.add(fileButton);
-        // topPanel.add(helpButton);
 
         bottomPanel = new JPanel(new GridLayout(1,1,0,0)); 
         StatusPanel sp = new StatusPanel();
