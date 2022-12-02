@@ -1,9 +1,14 @@
 package src;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
-public class SingletonDataSrc extends Observable{
+public class SingletonDataSrc extends Observable implements Serializable{
     private static SingletonDataSrc instance;
+    //private static final String filepath="/Users/spats/Documents/GitHub/Final-Project-564";
     Map<String, int[]> boxes;
     LinkedList<int[]> relation;
     LinkedList<int[]> triangles;
@@ -15,6 +20,7 @@ public class SingletonDataSrc extends Observable{
     String status;
     int countAssociation;
     int countComposition;
+    static int fileCount;
     
     private SingletonDataSrc(){
        
@@ -85,16 +91,35 @@ public class SingletonDataSrc extends Observable{
             instance.status = new String(str);
         instance.notifying();
     }
-    public void erase(){
-        instance.eraseRepo(); 
+    public static void erase(){
+        eraseRepo(); 
         instance.notifying();
     }
-    private void eraseRepo() {
+    private static void eraseRepo() {
         instance.boxes = null;
         instance.relation = null;
         instance.triangles = null;
         instance.diamonds = null;
         instance.arrows = null;
         instance.classList = null;
+    }
+    public static void save() throws FileNotFoundException{
+        WriteObjectToFile(instance);
+    }
+    private static void WriteObjectToFile(SingletonDataSrc serObj) throws FileNotFoundException {
+        try {
+            String Name = "File"+ ++fileCount;
+            FileOutputStream fileOut = new FileOutputStream(Name+".dat");
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(serObj);
+            objectOut.close();
+            System.out.println("The file was successfully saved to a file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static void load(SingletonDataSrc savedInstance){
+        instance = savedInstance;
+        instance.notifying();
     }
 }

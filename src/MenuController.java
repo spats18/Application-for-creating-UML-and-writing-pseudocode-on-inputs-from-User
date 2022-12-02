@@ -2,6 +2,7 @@ package src;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
@@ -13,29 +14,33 @@ public class MenuController extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         if( ((JMenuItem) e.getSource()).getText().equals("Save") ){
-            saveFile( (Main) e.getSource());
+            try {
+                SingletonDataSrc.save();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
         }
         else if( ((JMenuItem) e.getSource()).getText().equals("Load") ){
-            loadFile( (Main) e.getSource());
+            File file = loadFile();
+            //SingletonDataSrc.load(file);
         }
         else if( ((JMenuItem) e.getSource()).getText().equals("New") ){
-            SingletonDataSrc.getInstance().erase();
+            SingletonDataSrc.erase();
         }
-        
     }
 
-    public static void saveFile(Main main){
+    public static void saveFile(SingletonDataSrc instance){
         JFileChooser fileChooser = new JFileChooser();
-        if (fileChooser.showSaveDialog(main) == JFileChooser.APPROVE_OPTION) {
+        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
         }
-        // save to file
     }
-    public static void loadFile(Main main){
+    public static File loadFile(){
         JFileChooser fileChooser = new JFileChooser();
-        if (fileChooser.showSaveDialog(main) == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
+        File file = null;
+        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            file = fileChooser.getSelectedFile();
         }
-        // save to file
+        return file;
     }
 }
