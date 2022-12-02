@@ -3,14 +3,15 @@ package src;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.AbstractAction;
-import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 public class MenuController extends AbstractAction{
 
+    static final String[] TEAM = new String[]{"Sannidhya", "Karan", "Aashka", "Sarthak", "Thy", "Darshan"};
     @Override
     public void actionPerformed(ActionEvent e) {
         if( ((JMenuItem) e.getSource()).getText().equals("Save") ){
@@ -21,26 +22,29 @@ public class MenuController extends AbstractAction{
             }
         }
         else if( ((JMenuItem) e.getSource()).getText().equals("Load") ){
-            File file = loadFile();
-            //SingletonDataSrc.load(file);
+            File folder = new File(SingletonDataSrc.folder);
+            List<String> files = new ArrayList<>();
+            for(File file: folder.listFiles()){
+                String name= file.getName();
+
+                if(name.contains(".dat"))
+                    files.add(name);
+            }
+            String[] listOfFiles = new String[files.size()]; 
+            int i =0;
+            for(String file: files){
+                listOfFiles[i++] = file;
+            }
+            int selection = JOptionPane.showOptionDialog(null, null," Choose a file", 0, 3, null, (Object[]) listOfFiles, null); 
+            String file = listOfFiles[selection];
+            System.out.print(file);
+            SingletonDataSrc.load(file);
         }
         else if( ((JMenuItem) e.getSource()).getText().equals("New") ){
             SingletonDataSrc.erase();
         }
-    }
-
-    public static void saveFile(SingletonDataSrc instance){
-        JFileChooser fileChooser = new JFileChooser();
-        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
+        else{
+            JOptionPane.showMessageDialog(null, TEAM, "Team", JOptionPane.PLAIN_MESSAGE);
         }
-    }
-    public static File loadFile(){
-        JFileChooser fileChooser = new JFileChooser();
-        File file = null;
-        if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            file = fileChooser.getSelectedFile();
-        }
-        return file;
     }
 }

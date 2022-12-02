@@ -49,7 +49,8 @@ public class StrategyLine extends Strategy{
     }
     @Override
     public void getChoice() {
-        int selection = JOptionPane.showOptionDialog(null, null," Choose Relationship", 0, 3, null, (Object[]) options, (Object) options[2]); 
+        int selection = 0;
+        selection = JOptionPane.showOptionDialog(null, null," Choose Relationship", 0, 3, null, (Object[]) options, null); 
         choice = options[selection];
     }
 }

@@ -16,7 +16,7 @@ class Main extends JFrame{
     JPanel bottomPanel;
     JMenuBar menuBar;
     static JMenu file, help;
-    static JMenuItem m1, m2, m3;
+    static JMenuItem m1, m2, m3, m4;
     static final String[] ITEMS = new String[] {"New", "Save", "Load"};
     static final String[] MENUS = new String[] {"File", "Help"};
 
@@ -34,7 +34,7 @@ class Main extends JFrame{
         m1 = new JMenuItem("New");
         m2 = new JMenuItem("Save");
         m3 = new JMenuItem("Load");
-
+        m4 = new JMenuItem("Team Members");
         file = new JMenu("File");
         help = new JMenu("Help");
         file.add(m1);
@@ -42,10 +42,12 @@ class Main extends JFrame{
         file.add(m3);
         menuBar.add(file);
         menuBar.add(help);
+        help.add(m4);
         MenuController menuControl = new MenuController();
         m1.addActionListener(menuControl);
         m2.addActionListener(menuControl);
         m3.addActionListener(menuControl);
+        m4.addActionListener(menuControl);
         setJMenuBar(menuBar);
 
         root = new JPanel (new BorderLayout(5,5));

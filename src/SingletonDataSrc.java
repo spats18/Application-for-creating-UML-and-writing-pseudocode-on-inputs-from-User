@@ -1,7 +1,9 @@
 package src;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
@@ -10,7 +12,7 @@ import javax.swing.JOptionPane;
 
 public class SingletonDataSrc extends Observable implements Serializable{
     private static SingletonDataSrc instance;
-    //private static final String filepath="/Users/spats/Documents/GitHub/Final-Project-564";
+    public static final String folder="/Users/spats/Documents/GitHub/Final-Project-564/";
     Map<String, int[]> boxes;
     LinkedList<int[]> relation;
     LinkedList<int[]> triangles;
@@ -120,8 +122,28 @@ public class SingletonDataSrc extends Observable implements Serializable{
             ex.printStackTrace();
         }
     }
-    public static void load(SingletonDataSrc savedInstance){
-        instance = savedInstance;
+    public static void load(String fileName){
+        SingletonDataSrc savedInstance = (SingletonDataSrc) ReadObjectFromFile(folder+ fileName);
+        instance.boxes = savedInstance.boxes;
+        instance.relation = savedInstance.relation;
+        instance.triangles = savedInstance.triangles;
+        instance.diamonds = savedInstance.diamonds;
+        instance.arrows = savedInstance.arrows;
+        instance.classList = savedInstance.classList;
+        eraseRepo(); 
         instance.notifying();
+    }
+    public static Object ReadObjectFromFile(String filepath) {
+        try {
+            FileInputStream fileIn = new FileInputStream(filepath);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            Object obj = objectIn.readObject();
+            System.out.println("The file has been read");
+            objectIn.close();
+            return obj;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 }
