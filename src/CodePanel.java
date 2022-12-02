@@ -2,6 +2,8 @@ package src;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
 import java.awt.*;
 
 public class CodePanel extends JPanel implements Observer{
@@ -28,10 +30,10 @@ public class CodePanel extends JPanel implements Observer{
     CodePanel(){
         //setBorder(BorderFactory.createLineBorder(Color.black));
         setBackground(Color.lightGray);
-        JScrollPane scrollPane = new JScrollPane(this);
+        JScrollPane scrollPane = new JScrollPane();
+        add(scrollPane, BorderLayout.CENTER); 
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-        scrollPane.setBounds(50, 30, 300, 50);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     }
     public JPanel getPanel(){
         return this;

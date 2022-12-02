@@ -123,7 +123,7 @@ public class SingletonDataSrc extends Observable implements Serializable{
         }
     }
     public static void load(String fileName){
-        SingletonDataSrc savedInstance = (SingletonDataSrc) ReadObjectFromFile(folder+ fileName);
+        SingletonDataSrc savedInstance = ReadObjectFromFile(folder+ fileName);
         instance.boxes = savedInstance.boxes;
         instance.relation = savedInstance.relation;
         instance.triangles = savedInstance.triangles;
@@ -131,13 +131,14 @@ public class SingletonDataSrc extends Observable implements Serializable{
         instance.arrows = savedInstance.arrows;
         instance.classList = savedInstance.classList;
         eraseRepo(); 
+        System.out.println(instance.boxes);
         instance.notifying();
     }
-    public static Object ReadObjectFromFile(String filepath) {
+    public static SingletonDataSrc ReadObjectFromFile(String filepath) {
         try {
             FileInputStream fileIn = new FileInputStream(filepath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            Object obj = objectIn.readObject();
+            SingletonDataSrc obj = (SingletonDataSrc) objectIn.readObject();
             System.out.println("The file has been read");
             objectIn.close();
             return obj;
