@@ -108,14 +108,14 @@ public class SingletonDataSrc extends Observable implements Serializable{
         instance.classList = null;
     }
     public static void save() throws FileNotFoundException{
-        WriteObjectToFile(instance);
+        WriteObjectToFile();
     }
-    private static void WriteObjectToFile(SingletonDataSrc serObj) throws FileNotFoundException {
+    private static void WriteObjectToFile() throws FileNotFoundException {
         try {
             String Name = JOptionPane.showInputDialog("Enter File Name");
             FileOutputStream fileOut = new FileOutputStream(Name+".dat");
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(serObj);
+            objectOut.writeObject(instance);
             objectOut.close();
             System.out.println("The file was successfully saved to a file");
         } catch (Exception ex) {

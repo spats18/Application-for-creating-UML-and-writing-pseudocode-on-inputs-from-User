@@ -2,7 +2,6 @@ package src;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 import java.awt.*;
 
