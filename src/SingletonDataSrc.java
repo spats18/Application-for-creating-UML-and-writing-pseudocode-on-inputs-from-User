@@ -24,12 +24,10 @@ public class SingletonDataSrc extends Observable{
             instance = new SingletonDataSrc();
             boxes = new HashMap<>();
             relation = new LinkedList<>();
-            status = "Welcome!";
+            status = "Welcome! Click anywhere in the right panel to start creating classes.";
         }
         return instance;
     }
-
-
     public static Pair inBoxVicinity(int x, int y){
         if(boxes.size()>0)
             for(String key : boxes.keySet()){
@@ -48,10 +46,6 @@ public class SingletonDataSrc extends Observable{
         instance.notifying();
     }
 
-    public static void insertClass(String className)
-    {
-
-    }
     public static void addLine(int x1, int y1, int x2, int y2) {
         relation.add(new int[]{x1,y1,x2,y2});
     }

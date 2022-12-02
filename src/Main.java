@@ -13,7 +13,6 @@ class Main extends JFrame{
     static CodePanel cp;
     static DrawPanel dp;
     JPanel root;
-    //JPanel topPanel;
     JPanel midPanel;
     JPanel bottomPanel;
     JMenuBar menuBar;

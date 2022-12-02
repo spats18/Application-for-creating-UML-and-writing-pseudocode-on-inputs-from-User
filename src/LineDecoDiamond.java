@@ -13,7 +13,7 @@ public class LineDecoDiamond extends LineDecorator{
             SingletonDataSrc.addDiamonds(x1,y1);
 
     ArrayList<String> toModify = SingletonDataSrc.classList.get(c1);
-    toModify.add(1,"    "+c2 +" composeObject"+ (++SingletonDataSrc.countComposition)+ "= new "+ c2 +"( ) ;");
+    toModify.add(1,"\t"+c2 +" composeObject"+ (++SingletonDataSrc.countComposition)+ "= new "+ c2 +"( ) ;");
     SingletonDataSrc.updateClassList(c1, toModify);
     }
 
