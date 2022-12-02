@@ -23,7 +23,7 @@ public class Controller implements MouseListener{
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        Pair vicinityPair = SingletonDataSrc.inBoxVicinity(e.getX(), e.getY());
+        Pair vicinityPair = SingletonDataSrc.getInstance().inBoxVicinity(e.getX(), e.getY());
 
         if(firstClick && !vicinityPair.inVicinity){
             drawBox = true;
@@ -39,8 +39,8 @@ public class Controller implements MouseListener{
                 firstClick = true;
                 relationClasses[1] = vicinityPair.className;
                 drawBox = false;
-                int[] a = SingletonDataSrc.boxes.get(relationClasses[0]); 
-                int[] b = SingletonDataSrc.boxes.get(relationClasses[1]); 
+                int[] a = SingletonDataSrc.getInstance().boxes.get(relationClasses[0]); 
+                int[] b = SingletonDataSrc.getInstance().boxes.get(relationClasses[1]); 
                 this.decideAlgo(a[0], a[1], b[0], b[1], relationClasses[0], relationClasses[1]);
             }
         }

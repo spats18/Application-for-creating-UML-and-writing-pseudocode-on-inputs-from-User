@@ -10,14 +10,14 @@ public class LineDecoArrow extends LineDecorator{
         int slope = (y2-y1)/(x2-x1);
         int yIntercept =  y2 - (slope * x2);
         if(boxDirection == -1)
-            SingletonDataSrc.addArrows(x1,y1, boxDirection, slope, yIntercept);
+            SingletonDataSrc.getInstance().addArrows(x1,y1, boxDirection, slope, yIntercept);
         else
-            SingletonDataSrc.addArrows(x2,y2, boxDirection, slope, yIntercept);
+            SingletonDataSrc.getInstance().addArrows(x2,y2, boxDirection, slope, yIntercept);
         
-            ArrayList<String> toModify = SingletonDataSrc.classList.get(c1);
+            ArrayList<String> toModify = SingletonDataSrc.getInstance().classList.get(c1);
             toModify.add(1," }");
-            toModify.add(1, "\t\t\t"+c2 +" assObject"+ (++SingletonDataSrc.countAssociation)+ " = new "+ c2 +"( ) ;");
-            toModify.add(1,"\tmethod"+ (SingletonDataSrc.countAssociation)+ "( ){");
-            SingletonDataSrc.updateClassList(c1, toModify);
+            toModify.add(1, "\t\t\t"+c2 +" assObject"+ (++SingletonDataSrc.getInstance().countAssociation)+ " = new "+ c2 +"( ) ;");
+            toModify.add(1,"\tmethod"+ (SingletonDataSrc.getInstance().countAssociation)+ "( ){");
+            SingletonDataSrc.getInstance().updateClassList(c1, toModify);
     }
 }

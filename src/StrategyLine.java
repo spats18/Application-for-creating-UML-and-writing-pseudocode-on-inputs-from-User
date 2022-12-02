@@ -34,7 +34,7 @@ public class StrategyLine extends Strategy{
         }
         this.getChoice();
         this.line = this.drawLines(choice);
-        SingletonDataSrc.updateStatus(choice + " between "+c1+" and "+c2+" Added!");
+        SingletonDataSrc.getInstance().updateStatus(choice + " between "+c1+" and "+c2+" Added!");
         line.operation(xl, yl, xh, yh, boxDirection, c1, c2);
     }
     public Line drawLines(String choice) {

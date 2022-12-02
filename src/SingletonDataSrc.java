@@ -4,17 +4,17 @@ import java.util.*;
 
 public class SingletonDataSrc extends Observable{
     private static SingletonDataSrc instance;
-    static Map<String, int[]> boxes;
-    static LinkedList<int[]> relation;
-    static LinkedList<int[]> triangles;
-    static LinkedList<int[]> diamonds;
-    static LinkedList<int[]> arrows;
-    static Map<String, ArrayList<String>> classList;
+    Map<String, int[]> boxes;
+    LinkedList<int[]> relation;
+    LinkedList<int[]> triangles;
+    LinkedList<int[]> diamonds;
+    LinkedList<int[]> arrows;
+    Map<String, ArrayList<String>> classList;
     static final int HEIGHT = 15;//half
     static final int WIDTH = 30;// half
-    static String status;
-    static int countAssociation;
-    static int countComposition;
+    String status;
+    int countAssociation;
+    int countComposition;
     
     private SingletonDataSrc(){
        
@@ -22,16 +22,16 @@ public class SingletonDataSrc extends Observable{
     public static SingletonDataSrc getInstance(){
         if(instance == null){
             instance = new SingletonDataSrc();
-            boxes = new HashMap<>();
-            relation = new LinkedList<>();
-            status = "Welcome! Click anywhere in the right panel to start creating classes.";
+            instance.status = "Welcome! Click anywhere in the right panel to start creating classes.";
         }
         return instance;
     }
-    public static Pair inBoxVicinity(int x, int y){
-        if(boxes.size()>0)
-            for(String key : boxes.keySet()){
-                int[] coord = boxes.get(key);
+    public Pair inBoxVicinity(int x, int y){
+        if(instance.boxes == null)
+            instance.boxes = new HashMap<>();
+        if(instance.boxes.size()>0)
+            for(String key : instance.boxes.keySet()){
+                int[] coord = instance.boxes.get(key);
                 float ox = coord[0];
                 float oy = coord[1];
                 if((x <=  ox + WIDTH && x >= ox - WIDTH) && (y <=  oy + HEIGHT && y >= oy - HEIGHT)){
@@ -41,48 +41,60 @@ public class SingletonDataSrc extends Observable{
         return new Pair(false, "");
     }
 
-    public static void setClassName(String id, int x, int y){
-        boxes.put(id, new int[]{x,y});
+    public void setClassName(String id, int x, int y){
+        instance.boxes.put(id, new int[]{x,y});
         instance.notifying();
     }
 
-    public static void addLine(int x1, int y1, int x2, int y2) {
-        relation.add(new int[]{x1,y1,x2,y2});
+    public void addLine(int x1, int y1, int x2, int y2) {
+        if(instance.relation == null)
+            instance.relation = new LinkedList<>();
+        instance.relation.add(new int[]{x1,y1,x2,y2});
     }
-    public static void addDiamonds(int x, int y, int boxDirection, int slope, int yIntercept) {
-        if(diamonds == null)
-            diamonds = new LinkedList<>();
-        diamonds.add(new int[]{x,y,boxDirection, slope, yIntercept});
+    public void addDiamonds(int x, int y, int boxDirection, int slope, int yIntercept) {
+        if(instance.diamonds == null)
+            instance.diamonds = new LinkedList<>();
+        instance.diamonds.add(new int[]{x,y,boxDirection, slope, yIntercept});
         instance.notifying();
     }
-    public static void addArrows(int x, int y, int boxDirection,int slope, int yIntercept) {
-        if(arrows == null)
-            arrows = new LinkedList<>();
-        arrows.add(new int[]{x,y,boxDirection, slope, yIntercept});
+    public void addArrows(int x, int y, int boxDirection,int slope, int yIntercept) {
+        if(instance.arrows == null)
+            instance.arrows = new LinkedList<>();
+            instance.arrows.add(new int[]{x,y,boxDirection, slope, yIntercept});
         instance.notifying();
     }
-    public static void addTriangles(int x, int y, int boxDirection, int slope, int yIntercept) {
-        if(triangles == null)
-            triangles = new LinkedList<>();
-        triangles.add(new int[]{x,y,boxDirection,slope, yIntercept});
+    public void addTriangles(int x, int y, int boxDirection, int slope, int yIntercept) {
+        if(instance.triangles == null)
+            instance.triangles = new LinkedList<>();
+        instance.triangles.add(new int[]{x,y,boxDirection,slope, yIntercept});
         instance.notifying();
     }
-    public static void addClassList(String str, ArrayList<String> toAdd ) {
-        if(classList == null)
-            classList = new HashMap<>();
-        classList.put(str, toAdd);
+    public void addClassList(String str, ArrayList<String> toAdd ) {
+        if(instance.classList == null)
+            instance.classList = new HashMap<>();
+        instance.classList.put(str, toAdd);
         instance.notifying();
     }
-    public static void updateClassList(String str, ArrayList<String> toAdd ) {
-        if(classList == null)
-            classList = new HashMap<>();
-        classList.put(str, toAdd);
+    public void updateClassList(String str, ArrayList<String> toAdd ) {
+        if(instance.classList == null)
+            instance.classList = new HashMap<>();
+        instance.classList.put(str, toAdd);
         instance.notifying();
     }
-    public static void updateStatus(String str) {
-        status = new String(str);
+    public void updateStatus(String str) {
+            instance.status = new String(str);
         instance.notifying();
     }
-    public static void addArrows(int x2, int y2, int boxDirection, float slope, float yIntercept) {
+    public void erase(){
+        instance.eraseRepo(); 
+        instance.notifying();
+    }
+    private void eraseRepo() {
+        instance.boxes = null;
+        instance.relation = null;
+        instance.triangles = null;
+        instance.diamonds = null;
+        instance.arrows = null;
+        instance.classList = null;
     }
 }

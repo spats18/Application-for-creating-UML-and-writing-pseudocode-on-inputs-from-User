@@ -13,11 +13,11 @@ public class CodePanel extends JPanel implements Observer{
     @Override
     public void paintComponent(Graphics graphic){
         super.paintComponent(graphic);
-        if(SingletonDataSrc.classList == null)
+        if(SingletonDataSrc.getInstance()== null || SingletonDataSrc.getInstance().classList == null)
             return;
         int lineCnt = 15;
-        for(String key : SingletonDataSrc.classList.keySet()){
-            for(String str: SingletonDataSrc.classList.get(key)){
+        for(String key : SingletonDataSrc.getInstance().classList.keySet()){
+            for(String str: SingletonDataSrc.getInstance().classList.get(key)){
                 graphic.setColor(Color.black);
                 graphic.drawString(str, 5 , lineCnt);
                 lineCnt +=15;

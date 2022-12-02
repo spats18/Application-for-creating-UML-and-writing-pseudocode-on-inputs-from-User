@@ -15,8 +15,8 @@ class Main extends JFrame{
     JPanel midPanel;
     JPanel bottomPanel;
     JMenuBar menuBar;
-    static JMenu[] menus;
-    static JMenuItem[] menuItems;
+    static JMenu file, help;
+    static JMenuItem m1, m2, m3;
     static final String[] ITEMS = new String[] {"New", "Save", "Load"};
     static final String[] MENUS = new String[] {"File", "Help"};
 
@@ -31,19 +31,21 @@ class Main extends JFrame{
         super("CSE564 Final Project");
 
         menuBar = new JMenuBar();
-        menuItems = new JMenuItem[ITEMS.length];
-        menus = new JMenu[MENUS.length];
-        for(int i = 0; i< ITEMS.length ;i++)
-            menuItems[i] = new JMenuItem(ITEMS[i]);
+        m1 = new JMenuItem("New");
+        m2 = new JMenuItem("Save");
+        m3 = new JMenuItem("Load");
 
-        for(int i = 0; i< MENUS.length ;i++)
-            menus[i] = new JMenu(MENUS[i]);
-
-        for(int i = 0; i< menuItems.length ;i++)
-            menus[0].add(menuItems[i]);
-
-        for(int i = 0; i< menus.length ;i++)
-            menuBar.add(menus[i]);
+        file = new JMenu("File");
+        help = new JMenu("Help");
+        file.add(m1);
+        file.add(m2);
+        file.add(m3);
+        menuBar.add(file);
+        menuBar.add(help);
+        MenuController menuControl = new MenuController();
+        m1.addActionListener(menuControl);
+        m2.addActionListener(menuControl);
+        m3.addActionListener(menuControl);
         setJMenuBar(menuBar);
 
         root = new JPanel (new BorderLayout(5,5));
@@ -64,8 +66,8 @@ class Main extends JFrame{
         SingletonDataSrc.getInstance().addObserver(dp);
         SingletonDataSrc.getInstance().addObserver(cp);
         SingletonDataSrc.getInstance().addObserver(sp);
-        SingletonDataSrc.countAssociation = 0;
-        SingletonDataSrc.countComposition = 0;
+        SingletonDataSrc.getInstance().countAssociation = 0;
+        SingletonDataSrc.getInstance().countComposition = 0;
         midPanel.add(cp.getPanel());
         midPanel.add(dp.getPanel()); 
 

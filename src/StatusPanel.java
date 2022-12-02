@@ -27,7 +27,7 @@ public class StatusPanel extends JPanel implements Observer{
     public void paintComponent(Graphics graphic){
         super.paintComponent(graphic);
         graphic.setColor(Color.black);
-        graphic.drawString(SingletonDataSrc.status, 75 , 14);
+        graphic.drawString(SingletonDataSrc.getInstance().status, 75 , 14);
     }
     public Component getPanel() {
         return this;

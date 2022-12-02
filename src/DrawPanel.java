@@ -32,11 +32,11 @@ public class DrawPanel extends JPanel implements Observer {
         drawDiamonds(graphic);
     }
     private void drawRectangles(Graphics graphic){
-        if(SingletonDataSrc.boxes == null)
+        if(SingletonDataSrc.getInstance()== null || SingletonDataSrc.getInstance().boxes == null)
             return;
-        for (String key : SingletonDataSrc.boxes.keySet())
+        for (String key : SingletonDataSrc.getInstance().boxes.keySet())
         {
-            int[] coords = SingletonDataSrc.boxes.get(key);
+            int[] coords = SingletonDataSrc.getInstance().boxes.get(key);
             int x = coords[0] - (SingletonDataSrc.WIDTH);
             int y = coords[1] - (SingletonDataSrc.HEIGHT);
             graphic.setColor(Color.yellow);
@@ -46,10 +46,10 @@ public class DrawPanel extends JPanel implements Observer {
         }
     }
     private void drawLines(Graphics graphic) {
-        if(SingletonDataSrc.relation == null)
+        if(SingletonDataSrc.getInstance()== null ||SingletonDataSrc.getInstance().relation == null)
             return;
-        for (int i = 0; i < SingletonDataSrc.relation.size(); i++){
-            int[] coords = SingletonDataSrc.relation.get(i);
+        for (int i = 0; i < SingletonDataSrc.getInstance().relation.size(); i++){
+            int[] coords = SingletonDataSrc.getInstance().relation.get(i);
             int x1 = coords[0] ;
             int y1 = coords[1] ;
             int x2 = coords[2] ;
@@ -59,9 +59,9 @@ public class DrawPanel extends JPanel implements Observer {
         }
     }
     private void drawTriangles(Graphics graphic) {
-        if(SingletonDataSrc.triangles == null)
+        if(SingletonDataSrc.getInstance()== null || SingletonDataSrc.getInstance().triangles == null)
             return;
-        for(int[] coords : SingletonDataSrc.triangles){
+        for(int[] coords : SingletonDataSrc.getInstance().triangles){
             int x1,x2,x3,y1,y2,y3;
             if(coords[2] == -1){
                 x1 = coords[0];         y1 = coords[1];
@@ -80,9 +80,9 @@ public class DrawPanel extends JPanel implements Observer {
         }
     }
     private void drawDiamonds(Graphics graphic) {
-        if(SingletonDataSrc.diamonds == null)
+        if(SingletonDataSrc.getInstance()== null || SingletonDataSrc.getInstance().diamonds == null)
             return;
-        for (int[] coords : SingletonDataSrc.diamonds){
+        for (int[] coords : SingletonDataSrc.getInstance().diamonds){
             int x1,x2,x3,x4,y1,y2,y3,y4;
             if(coords[2] == -1){
                 x1 = coords[0];         y1 = coords[1];
@@ -100,57 +100,34 @@ public class DrawPanel extends JPanel implements Observer {
             graphic.drawPolygon(dia);
         }
     }
-
     private void drawArrows(Graphics graphic) {
-        if(SingletonDataSrc.arrows == null)
+        if(SingletonDataSrc.getInstance()== null || SingletonDataSrc.getInstance().arrows == null)
             return;
-        for (int[] coords : SingletonDataSrc.arrows){
+        for (int[] coords : SingletonDataSrc.getInstance().arrows){
             int ex1, ex2, ey1, ey2;
-            double angle = 180;
-            //double angleAdd = Math.atan(coords[3]);
+            double angle;
+            double angleAdd =0;// Math.atan(coords[3]);
             if(coords[2] == -1){
                 // ex1 = coords[0];         ey1 = coords[1];
                 // ex2 = coords[0]+8;      ey2 = coords[1]+2;
-                angle = 180;
+                angle = 180 + angleAdd;
                 ex1 = coords[0] + 10 * (int)Math.cos(Math.toRadians(angle));
                 ey1 = coords[1] + 10 * (int)Math.sin(Math.toRadians(angle));
-                angle = 90;
+                angle = 90 + angleAdd;
                 ex2 = coords[0] + 10 * (int)Math.cos(Math.toRadians(angle));
                 ey2 = coords[1] + 10 * (int)Math.sin(Math.toRadians(angle));
             }else{
                 // ex1 = coords[0];         ey1 = coords[1];
                 // ex2 = coords[0]-8;       ey2 = coords[1]-1;
-                angle = 180;
+                angle = 180 + angleAdd;
                 ex1 = coords[0] - 10 * (int)Math.cos(Math.toRadians(angle));
                 ey1 = coords[1] - 10 * (int)Math.sin(Math.toRadians(angle));
-                angle = 90;
+                angle = 90 + angleAdd;
                 ex2 = coords[0] - 10 * (int)Math.cos(Math.toRadians(angle));
                 ey2 = coords[1] - 10 * (int)Math.sin(Math.toRadians(angle));
             }
             graphic.drawLine(coords[0], coords[1], ex1, ey1);
             graphic.drawLine(coords[0], coords[1], ex2, ey2);
         }
-        // for (int[] coords : SingletonDataSrc.arrows)
-        // {
-        //     int x1 = coords[0] ;
-        //     int y1 = coords[1] ;
-        //     int x2 = coords[2] ;
-        //     int y2 = coords[3] ;
-
-        //     double dx = x1 - x2;
-        //     double dy = y1 - y2;
-        //     double phi = Math.toRadians(40);
-        //     int barb = 20;
-        //     double theta = Math.atan2(dy, dx);
-        //     //System.out.println("theta = " + Math.toDegrees(theta));
-        //     double x, y, rho = theta + phi;
-        //     for(int j = 0; j < 2; j++)
-        // {
-        //     x = x1 - barb * Math.cos(rho);
-        //     y = y1 - barb * Math.sin(rho);
-        //     g.drawLine(x1, y1, (int)x, (int)y);
-        //     rho = theta - phi;
-        // }
-        // }
     }
 }
