@@ -19,10 +19,13 @@ public class CodePanel extends JPanel implements Observer{
         if(SingletonDataSrc.classList == null)
             return;
         int lineCnt = 15;
-        for(String str: SingletonDataSrc.classList){
-            graphic.setColor(Color.black);
-            graphic.drawString(str, 5 , lineCnt);
-            lineCnt +=15;
+        for(String key : SingletonDataSrc.classList.keySet()){
+            for(String str: SingletonDataSrc.classList.get(key)){
+                graphic.setColor(Color.black);
+                graphic.drawString(str, 5 , lineCnt);
+                lineCnt +=15;
+            }
+            graphic.drawString("", 5 , lineCnt);
         }
     }
     CodePanel(){

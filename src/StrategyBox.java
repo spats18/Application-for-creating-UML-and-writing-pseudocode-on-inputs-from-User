@@ -1,19 +1,21 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.JOptionPane;
 
 public class StrategyBox extends Strategy{
 
     @Override
-    public void algorithm(int x1, int y1, int x2, int y2) {
+    public void algorithm(int x1, int y1, int x2, int y2, String c1, String c2) {
         this.xl = x1;
         this.yl = y1;
         this.getChoice();
-        String s = "Class " + choice + " Added!";
-        SingletonDataSrc.status = s;
+        SingletonDataSrc.status = "Class " + choice + " Added!";
         SingletonDataSrc.setClassName(choice, xl, yl);
-        SingletonDataSrc.addClassList("Class "+ choice +" {");
-        SingletonDataSrc.addClassList("}\n");
+        ArrayList<String> toAdd = new ArrayList<>(Arrays.asList(new String[]{"Class "+ choice +" {", "}"}));
+        SingletonDataSrc.addClassList(choice, toAdd);
     }
 
     @Override

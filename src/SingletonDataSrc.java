@@ -9,10 +9,12 @@ public class SingletonDataSrc extends Observable{
     static LinkedList<int[]> triangles;
     static LinkedList<int[]> diamonds;
     static LinkedList<int[]> arrows;
-    static LinkedList<String> classList;
+    static Map<String, ArrayList<String>> classList;
     static final int HEIGHT = 15;//half
     static final int WIDTH = 30;// half
     static String status;
+    static int countAssociation;
+    static int countComposition;
     private SingletonDataSrc(){
        
     }
@@ -70,11 +72,16 @@ public class SingletonDataSrc extends Observable{
         triangles.add(new int[]{x,y});
         instance.notifying();
     }
-    public static void addClassList(String str) {
+    public static void addClassList(String str, ArrayList<String> toAdd ) {
         if(classList == null)
-            classList = new LinkedList<>();
-        classList.add(str);
+            classList = new HashMap<>();
+        classList.put(str, toAdd);
         instance.notifying();
     }
-
+    public static void updateClassList(String str, ArrayList<String> toAdd ) {
+        if(classList == null)
+            classList = new HashMap<>();
+        classList.put(str, toAdd);
+        instance.notifying();
+    }
 }

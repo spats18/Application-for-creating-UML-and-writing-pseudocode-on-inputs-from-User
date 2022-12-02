@@ -57,7 +57,8 @@ class Main extends JFrame implements MouseListener{
 
         SingletonDataSrc.getInstance().addObserver(dp);
         SingletonDataSrc.getInstance().addObserver(cp);
-
+        SingletonDataSrc.countAssociation = 0;
+        SingletonDataSrc.countComposition = 0;
         midPanel.add(cp.getPanel()); //component 0
         midPanel.add(dp.getPanel()); //component 1
         
@@ -70,14 +71,14 @@ class Main extends JFrame implements MouseListener{
         add(root);
         setVisible(true);
     }
-    public void decideAlgo(int x1, int y1, int x2, int y2){
+    public void decideAlgo(int x1, int y1, int x2, int y2, String c1, String c2){
         
         if(drawBox){
             strategy = new StrategyBox();
-            strategy.algorithm(x1, y1, x2,y2);
+            strategy.algorithm(x1, y1, x2,y2, c1, c2);
         }else{
             strategy = new StrategyLine();
-            strategy.algorithm(x1, y1, x2, y2);
+            strategy.algorithm(x1, y1, x2, y2,c1,c2);
             SingletonDataSrc.status = "New Line Added!";
         }
     }
@@ -104,7 +105,7 @@ class Main extends JFrame implements MouseListener{
 
         if(firstClick && !vicinityPair.inVicinity){
             drawBox = true;
-            this.decideAlgo(x1, y1, x2, y2);
+            this.decideAlgo(x1, y1, x2, y2, null, null);
         }
         else if(vicinityPair.inVicinity){
             if(firstClick){
@@ -118,7 +119,7 @@ class Main extends JFrame implements MouseListener{
                 drawBox = false;
                 int[] a = SingletonDataSrc.boxes.get(relationClasses[0]); 
                 int[] b = SingletonDataSrc.boxes.get(relationClasses[1]); 
-                this.decideAlgo(a[0], a[1], b[0], b[1]);
+                this.decideAlgo(a[0], a[1], b[0], b[1], relationClasses[0], relationClasses[1]);
             }
         }
         else 

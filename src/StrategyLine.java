@@ -7,7 +7,7 @@ public class StrategyLine extends Strategy{
     String[] options ={"Inheritance", "Composition", "Association" };
 
     @Override
-    public void algorithm(int x1, int y1, int x2, int y2) {
+    public void algorithm(int x1, int y1, int x2, int y2, String c1, String c2) {
         if(y1 < y2){
             boxDirection = 1;
             this.xl = x1;
@@ -33,11 +33,9 @@ public class StrategyLine extends Strategy{
             this.yh -= SingletonDataSrc.HEIGHT;
         }
         this.getChoice();
-        String s = "Relationship " + choice + " Added!";
-        SingletonDataSrc.status = s;
-        SingletonDataSrc.addLine(xl, yl, xh, yh);
         this.line = this.drawLines(choice);
-        line.operation(xl, yl, xh, yh);
+        SingletonDataSrc.status = choice + " between "+c1+" and "+c2+" Added!";
+        line.operation(xl, yl, xh, yh, boxDirection, c1, c2);
     }
     public Line drawLines(String choice) {
         Line line = new LineConcrete();
