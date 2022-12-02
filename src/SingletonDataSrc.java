@@ -6,11 +6,13 @@ public class SingletonDataSrc extends Observable{
     private static SingletonDataSrc instance;
     static Map<String, int[]> boxes;
     static LinkedList<int[]> relation;
+    static LinkedList<int[]> triangles;
+    static LinkedList<int[]> diamonds;
+    static LinkedList<int[]> arrows;
     static LinkedList<String> classList;
     static final int HEIGHT = 15;
     static final int WIDTH = 30;
     static String status;
-    static int x1, x2, y1, y2;
     private SingletonDataSrc(){
        
     }
@@ -19,10 +21,10 @@ public class SingletonDataSrc extends Observable{
             instance = new SingletonDataSrc();
             boxes = new HashMap<>();
             relation = new LinkedList<>();
-            x1 = -1;
-            x2 = -1;
-            y1 = -1;
-            y2 = -1;
+            // x1 = -1;
+            // x2 = -1;
+            // y1 = -1;
+            // y2 = -1;
             status = "Welcome!";
         }
         return instance;
@@ -52,8 +54,24 @@ public class SingletonDataSrc extends Observable{
 
     }
     public static void addLine(int x1, int y1, int x2, int y2) {
-
         relation.add(new int[]{x1,y1,x2,y2});
+    }
+    public static void addDiamonds(int x, int y) {
+        if(diamonds == null)
+            diamonds = new LinkedList<>();
+        diamonds.add(new int[]{x,y});
+        instance.notifying();
+    }
+    public static void addArrows(int x, int y) {
+        if(arrows == null)
+            arrows = new LinkedList<>();
+        arrows.add(new int[]{x,y});
+        instance.notifying();
+    }
+    public static void addTriangles(int x, int y) {
+        if(triangles == null)
+            triangles = new LinkedList<>();
+        triangles.add(new int[]{x,y});
         instance.notifying();
     }
 

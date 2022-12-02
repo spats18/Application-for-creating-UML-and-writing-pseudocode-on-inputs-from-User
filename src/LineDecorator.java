@@ -1,18 +1,16 @@
 package src;
-import java.awt.*;
 
 public abstract class LineDecorator implements Line {
 
     protected Line line;
-    protected int x1, y1;
 
     public void setLine(Line line){
         this.line = line;
     }
     @Override
-    public void operation(Graphics g) {
+    public void operation(int x1, int y1, int x2, int y2) {
        if(line !=null){
-        line.operation(g);
+        line.operation(x1, y1, x2, y2);
        }
     }
     

@@ -115,6 +115,7 @@ class Main extends JFrame implements MouseListener{
         }
         else 
             firstClick = true;
+        bottomPanel.setText(SingletonDataSrc.status);
         // if (e.getSource() == dp.getPanel()){
         //     System.out.println("At Draw Panel");
         //     flag = false;
@@ -122,7 +123,6 @@ class Main extends JFrame implements MouseListener{
         // else if (e.getSource() == cp.getPanel()){
         //     System.out.println("At Code Panel");
         // }
-        bottomPanel.setText(SingletonDataSrc.status);
     }
     @Override
     public void mousePressed(MouseEvent e) {

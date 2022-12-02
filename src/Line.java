@@ -1,6 +1,5 @@
 package src;
-import java.awt.*;
 
 interface Line {
-    public void operation(Graphics g);
+    public void operation(int x1, int y1, int x2, int y2);
 }
