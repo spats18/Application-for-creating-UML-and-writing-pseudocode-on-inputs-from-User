@@ -9,8 +9,8 @@ import java.awt.*;
 public class CodePanel extends JPanel implements Observer{
 
     @Override
-    public void update(Observable observable) {
-        
+    public void update(){
+        repaint();
     }
     CodePanel(){
         

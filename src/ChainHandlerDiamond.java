@@ -4,7 +4,7 @@ public class ChainHandlerDiamond extends ChainHandler{
     
     @Override
     public Line handler(Line line, String choice){
-        if(choice.equals("COMPOSITION")){
+        if(choice.equals("Composition")){
             LineDecoDiamond lineDia = new LineDecoDiamond();
             lineDia.setLine(line);
             return lineDia;

@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 
 public class SingletonRadioMenu extends JFrame implements ActionListener{
-    private static SingletonRadioMenu instance;
+    private static SingletonRadioMenu instance = new SingletonRadioMenu();;
     public static String Relationship; 
 
     private static final String ASSOCIATION = "Association";
@@ -51,8 +51,7 @@ public class SingletonRadioMenu extends JFrame implements ActionListener{
         }
     }
 
-    public static void showMenu()
-    {
+    public static void showMenu(){
         instance.setVisible(true);
     }
 

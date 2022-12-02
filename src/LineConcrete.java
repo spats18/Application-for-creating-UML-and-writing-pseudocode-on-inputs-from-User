@@ -2,22 +2,13 @@ package src;
 import java.awt.*;
 
 public class LineConcrete implements Line {
+    int x1, y1, x2, y2;
+    public LineConcrete(int x1, int y1, int x2, int y2) {
+
+    }
 
     @Override
     public void operation(Graphics g) {
-        for (int i = 0; i < SingletonDataSrc.lineCoordinates.size(); i++)
-        {
-            int[] coords = SingletonDataSrc.lineCoordinates.get(i);
-            int x1 = coords[0] ;
-            int y1 = coords[1] ;
-            int x2 = coords[2] ;
-            int y2 = coords[3] ;
-            g.setColor(Color.white);
-            g.drawLine(x1, y1, x2, y2);
-        }
-        
+        SingletonDataSrc.addLine(x1, y1, x2, y2);
     }
-
-    
-    
 }

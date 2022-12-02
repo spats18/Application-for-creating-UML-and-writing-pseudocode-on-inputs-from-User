@@ -13,17 +13,19 @@ import java.awt.event.MouseEvent;
 class Main extends JFrame implements MouseListener{
     static CodePanel cp;
     static DrawPanel dp;
+    Strategy strategy;
     JPanel root;
     JPanel topPanel;
     JPanel midPanel;
     JTextPane bottomPanel;
-
+    int x1, y1, x2, y2;
+    boolean firstClick = true;
     /**
      * main method is the driver method to start the plotting of points.
      */
     public static void main(String args[]){
-        SingletonDataSrc.getInstance();
-        SingletonRadioMenu.getInstance();
+       // SingletonDataSrc.getInstance();
+       // SingletonRadioMenu.getInstance();
         Main main = new Main();
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setSize(1000,800);
@@ -49,10 +51,12 @@ class Main extends JFrame implements MouseListener{
         midPanel = new JPanel(new GridLayout(1,2,10,0));
 
         cp = new CodePanel();
-        cp.addMouseListener(this);
+        //cp.addMouseListener(this);
         dp = new DrawPanel(); 
         dp.addMouseListener(this);
-        
+        //dp.addMouseMotionListener(this);
+        SingletonDataSrc.getInstance().addObserver(dp);
+        SingletonDataSrc.getInstance().addObserver(cp);
         midPanel.add(cp.getPanel()); //component 0
         midPanel.add(dp.getPanel()); //component 1
         
@@ -65,7 +69,17 @@ class Main extends JFrame implements MouseListener{
         add(root);
         setVisible(true);
     }
-
+    public void decideAlgo(int x1, int y1, int x2, int y2){
+        
+        if(x2==-1 && y2 == -1){
+            strategy = new StrategyBox();
+            strategy.algorithm(x1, y1, x2,y2);
+        }else{
+            strategy = new StrategyLine();
+            strategy.algorithm(x1, y1, x2, y2);
+            SingletonDataSrc.status = "New Line Added!";
+        }
+    }
     /**
      * This is an overridden method to define what should the Main class do
      * when the button is clicked.
@@ -74,23 +88,42 @@ class Main extends JFrame implements MouseListener{
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        // //dp.decideAlgo(x,y);
-        // System.out.println(x+","+y);   
+        boolean inVicinity = SingletonDataSrc.inBoxVicinity(e.getX(), e.getY());
+        
+        if(firstClick){
+            x1 = e.getX();
+            y1 = e.getY();
+            x2 = -1;
+            y2 = -1;
+        }
+        else{
+            x2 = e.getX();
+            y2 = e.getY();
+        }
 
-        if (e.getSource() == dp.getPanel())
-        {
-            System.out.println("At Draw Panel");
-            dp.decideAlgo(x, y,"in box strategy");
+        if(firstClick && !inVicinity){
+            this.decideAlgo(x1, y1, x2, y2);
         }
-        else if (e.getSource() == cp.getPanel())
-        {
-            System.out.println("At Code Panel");
+        else if(inVicinity){
+            if(firstClick){
+                firstClick = false;
+            }
+            else {
+                firstClick = true;
+                this.decideAlgo(x1, y1, x2, y2);
+            }
         }
+        else 
+            firstClick = true;
+        // if (e.getSource() == dp.getPanel()){
+        //     System.out.println("At Draw Panel");
+        //     flag = false;
+        // }
+        // else if (e.getSource() == cp.getPanel()){
+        //     System.out.println("At Code Panel");
+        // }
         bottomPanel.setText(SingletonDataSrc.status);
     }
-    
     @Override
     public void mousePressed(MouseEvent e) {
         
@@ -110,5 +143,4 @@ class Main extends JFrame implements MouseListener{
     public void mouseExited(MouseEvent e) {
         
     }
-    
 }

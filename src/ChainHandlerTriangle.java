@@ -4,7 +4,7 @@ public class ChainHandlerTriangle extends ChainHandler{
     
     @Override
     public Line handler(Line line, String choice){
-        if(choice.equals("INHERITANCE")){
+        if(choice.equals("Inheritance")){
             LineDecoTriangle lineTri = new LineDecoTriangle();
             lineTri.setLine(line);
             return lineTri;

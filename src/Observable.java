@@ -8,7 +8,7 @@ import java.util.*;
  * It will notify all its observers whenever there's a change in dataset. 
  */
 abstract class Observable {
-    List<Observer> observers = new ArrayList<>(3);
+    List<Observer> observers = new ArrayList<>();
 
     /**
      * This method will add the Observer to the list.
@@ -31,6 +31,6 @@ abstract class Observable {
      */
     public void notifying(){
         for( Observer ob : observers)
-            ob.update(this);
+            ob.update();
     }
 }

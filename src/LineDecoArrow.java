@@ -7,9 +7,9 @@ public class LineDecoArrow extends LineDecorator{
     public void operation(Graphics g){
         super.operation(g);
         g.setColor(Color.white);
-        for (int i = 0; i < SingletonDataSrc.lineCoordinates.size(); i++)
+        for (String key : SingletonDataSrc.boxes.keySet())
         {
-            int[] coords = SingletonDataSrc.lineCoordinates.get(i);
+            int[] coords = SingletonDataSrc.boxes.get(key);
             int x1 = coords[0] ;
             int y1 = coords[1] ;
             int x2 = coords[2] ;

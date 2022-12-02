@@ -11,5 +11,5 @@ interface Observer {
      * @param observable The observable object which can be referenced to get the 
      * changed dataset.
      */
-    public void update(Observable observable);
+    public void update();
 }

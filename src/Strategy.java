@@ -1,13 +1,7 @@
 package src;
 
 
-public class Strategy extends Observable{
+abstract class Strategy extends Observable{
     String choice;
-    DrawPanel panel;
-    Strategy(DrawPanel panel){
-        this.panel = panel;
-    }
-    public void algorithm(){
-        panel.repaint();
-    }
+    public abstract void algorithm(int x1, int y1, int x2, int y2);
 }

@@ -4,6 +4,7 @@ import java.awt.*;
 public abstract class LineDecorator implements Line {
 
     protected Line line;
+    protected int x1, y1;
 
     public void setLine(Line line){
         this.line = line;
