@@ -74,5 +74,11 @@ public class SingletonDataSrc extends Observable{
         triangles.add(new int[]{x,y});
         instance.notifying();
     }
+    public static void addClassList(String str) {
+        if(classList == null)
+            classList = new LinkedList<>();
+        classList.add(str);
+        instance.notifying();
+    }
 
 }

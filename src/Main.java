@@ -20,12 +20,11 @@ class Main extends JFrame implements MouseListener{
     JTextPane bottomPanel;
     int x1, y1, x2, y2;
     boolean firstClick = true;
+    boolean drawBox = true;
     /**
      * main method is the driver method to start the plotting of points.
      */
     public static void main(String args[]){
-       // SingletonDataSrc.getInstance();
-       // SingletonRadioMenu.getInstance();
         Main main = new Main();
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setSize(1000,800);
@@ -54,9 +53,10 @@ class Main extends JFrame implements MouseListener{
         //cp.addMouseListener(this);
         dp = new DrawPanel(); 
         dp.addMouseListener(this);
-        //dp.addMouseMotionListener(this);
+
         SingletonDataSrc.getInstance().addObserver(dp);
         SingletonDataSrc.getInstance().addObserver(cp);
+
         midPanel.add(cp.getPanel()); //component 0
         midPanel.add(dp.getPanel()); //component 1
         
@@ -71,7 +71,7 @@ class Main extends JFrame implements MouseListener{
     }
     public void decideAlgo(int x1, int y1, int x2, int y2){
         
-        if(x2==-1 && y2 == -1){
+        if(drawBox){
             strategy = new StrategyBox();
             strategy.algorithm(x1, y1, x2,y2);
         }else{
@@ -102,6 +102,7 @@ class Main extends JFrame implements MouseListener{
         }
 
         if(firstClick && !inVicinity){
+            drawBox = true;
             this.decideAlgo(x1, y1, x2, y2);
         }
         else if(inVicinity){
@@ -110,6 +111,7 @@ class Main extends JFrame implements MouseListener{
             }
             else {
                 firstClick = true;
+                drawBox = false;
                 this.decideAlgo(x1, y1, x2, y2);
             }
         }

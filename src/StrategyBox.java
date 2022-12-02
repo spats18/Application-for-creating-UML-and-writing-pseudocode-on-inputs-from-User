@@ -15,6 +15,8 @@ public class StrategyBox extends Strategy{
         String s = "Class " + choice + " Added!";
         SingletonDataSrc.status = s;
         SingletonDataSrc.setClassName(choice, x1, y1);
+        SingletonDataSrc.addClassList("Class "+ choice +" {");
+        SingletonDataSrc.addClassList("}\n");
     }
 
 
