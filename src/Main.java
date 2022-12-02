@@ -21,6 +21,7 @@ class Main extends JFrame implements MouseListener{
     int x1, y1, x2, y2;
     boolean firstClick = true;
     boolean drawBox = true;
+    String[] relationClasses;
     /**
      * main method is the driver method to start the plotting of points.
      */
@@ -88,7 +89,7 @@ class Main extends JFrame implements MouseListener{
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        boolean inVicinity = SingletonDataSrc.inBoxVicinity(e.getX(), e.getY());
+        Pair vicinityPair = SingletonDataSrc.inBoxVicinity(e.getX(), e.getY());
         
         if(firstClick){
             x1 = e.getX();
@@ -101,18 +102,23 @@ class Main extends JFrame implements MouseListener{
             y2 = e.getY();
         }
 
-        if(firstClick && !inVicinity){
+        if(firstClick && !vicinityPair.inVicinity){
             drawBox = true;
             this.decideAlgo(x1, y1, x2, y2);
         }
-        else if(inVicinity){
+        else if(vicinityPair.inVicinity){
             if(firstClick){
+                relationClasses = new String[2];
+                relationClasses[0] = vicinityPair.className;
                 firstClick = false;
             }
             else {
                 firstClick = true;
+                relationClasses[1] = vicinityPair.className;
                 drawBox = false;
-                this.decideAlgo(x1, y1, x2, y2);
+                int[] a = SingletonDataSrc.boxes.get(relationClasses[0]); 
+                int[] b = SingletonDataSrc.boxes.get(relationClasses[1]); 
+                this.decideAlgo(a[0], a[1], b[0], b[1]);
             }
         }
         else 

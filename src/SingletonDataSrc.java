@@ -10,8 +10,8 @@ public class SingletonDataSrc extends Observable{
     static LinkedList<int[]> diamonds;
     static LinkedList<int[]> arrows;
     static LinkedList<String> classList;
-    static final int HEIGHT = 15;
-    static final int WIDTH = 30;
+    static final int HEIGHT = 15;//half
+    static final int WIDTH = 30;// half
     static String status;
     private SingletonDataSrc(){
        
@@ -21,27 +21,23 @@ public class SingletonDataSrc extends Observable{
             instance = new SingletonDataSrc();
             boxes = new HashMap<>();
             relation = new LinkedList<>();
-            // x1 = -1;
-            // x2 = -1;
-            // y1 = -1;
-            // y2 = -1;
             status = "Welcome!";
         }
         return instance;
     }
 
 
-    public static boolean inBoxVicinity(int x, int y){
+    public static Pair inBoxVicinity(int x, int y){
         if(boxes.size()>0)
             for(String key : boxes.keySet()){
                 int[] coord = boxes.get(key);
                 float ox = coord[0];
                 float oy = coord[1];
                 if((x <=  ox + WIDTH && x >= ox - WIDTH) && (y <=  oy + HEIGHT && y >= oy - HEIGHT)){
-                    return true;
+                    return new Pair(true, key);
                 }
             }
-        return false;
+        return new Pair(false, "");
     }
 
     public static void setClassName(String id, int x, int y){
