@@ -13,6 +13,7 @@ class Main extends JFrame{
     static DrawPanel dp;
     JPanel root;
     JPanel midPanel;
+    JScrollPane scroll;
     JPanel bottomPanel;
     JMenuBar menuBar;
     static JMenu file, help;
@@ -39,7 +40,7 @@ class Main extends JFrame{
      */
 
     public Main(){
-        super("CSE564 Final Project");
+        super("UML class diagrams - CSE 564 || Final Project");
 
         menuBar = new JMenuBar();
         m1 = new JMenuItem("New");
@@ -75,13 +76,12 @@ class Main extends JFrame{
         Controller control = new Controller();
         dp.addMouseListener(control);
 
-       
         SingletonDataSrc.getInstance().addObserver(dp);
         SingletonDataSrc.getInstance().addObserver(cp);
         SingletonDataSrc.getInstance().addObserver(sp);
         SingletonDataSrc.getInstance().countAssociation = 0;
         SingletonDataSrc.getInstance().countComposition = 0;
-        midPanel.add(cp.getPanel());
+
         midPanel.add(dp.getPanel());
 
         //root.add(topPanel, BorderLayout.PAGE_START);

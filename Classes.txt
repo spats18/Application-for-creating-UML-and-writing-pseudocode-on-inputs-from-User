@@ -1,0 +1,215 @@
+boxes
+29
+class19
+397
+496
+class9
+400
+218
+class8
+408
+373
+class21
+490
+101
+class20
+484
+297
+class23
+297
+176
+class22
+380
+70
+class25
+57
+463
+class24
+29
+194
+class27
+103
+544
+class26
+116
+630
+class28
+308
+647
+class7
+370
+582
+class6
+252
+34
+class5
+87
+44
+class4
+151
+31
+class3
+217
+98
+class2
+170
+349
+class1
+183
+261
+class10
+181
+496
+class0
+107
+94
+class12
+277
+436
+class11
+102
+406
+class14
+369
+122
+class13
+309
+262
+class16
+43
+293
+class15
+206
+184
+class18
+225
+614
+class17
+38
+606
+relation
+0
+triangles
+0
+diamonds
+0
+arrows
+0
+classList
+29
+class19
+2
+Class class19 {
+}
+class9
+2
+Class class9 {
+}
+class8
+2
+Class class8 {
+}
+class21
+2
+Class class21 {
+}
+class20
+2
+Class class20 {
+}
+class23
+2
+Class class23 {
+}
+class22
+2
+Class class22 {
+}
+class25
+2
+Class class25 {
+}
+class24
+2
+Class class24 {
+}
+class27
+2
+Class class27 {
+}
+class26
+2
+Class class26 {
+}
+class28
+2
+Class class28 {
+}
+class7
+2
+Class class7 {
+}
+class6
+2
+Class class6 {
+}
+class5
+2
+Class class5 {
+}
+class4
+2
+Class class4 {
+}
+class3
+2
+Class class3 {
+}
+class2
+2
+Class class2 {
+}
+class1
+2
+Class class1 {
+}
+class10
+2
+Class class10 {
+}
+class0
+2
+Class class0 {
+}
+class12
+2
+Class class12 {
+}
+class11
+2
+Class class11 {
+}
+class14
+2
+Class class14 {
+}
+class13
+2
+Class class13 {
+}
+class16
+2
+Class class16 {
+}
+class15
+2
+Class class15 {
+}
+class18
+2
+Class class18 {
+}
+class17
+2
+Class class17 {
+}

@@ -29,7 +29,7 @@ public class StrategyBox extends Strategy{
         SingletonDataSrc.getInstance().updateStatus("Class " + choice + " Added!");
         SingletonDataSrc.getInstance().setClassName(choice, xl, yl);
         ArrayList<String> toAdd = new ArrayList<>(Arrays.asList(new String[]{"Class "+ choice +" {", "}"}));
-        SingletonDataSrc.getInstance().addClassList(choice, toAdd);
+        SingletonDataSrc.getInstance().updateClassList(choice, toAdd);
     }
 
     /**

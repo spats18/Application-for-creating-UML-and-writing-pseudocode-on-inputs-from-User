@@ -10,7 +10,7 @@ public class DrawPanel extends JPanel implements Observer {
     Line line;
 
     DrawPanel(){
-        setBackground(Color.cyan);
+        setBackground(Color.decode("#c8cacc"));
     }
 
     public JPanel getPanel(){
@@ -39,7 +39,7 @@ public class DrawPanel extends JPanel implements Observer {
             int[] coords = SingletonDataSrc.getInstance().boxes.get(key);
             int x = coords[0] - (SingletonDataSrc.WIDTH);
             int y = coords[1] - (SingletonDataSrc.HEIGHT);
-            graphic.setColor(Color.yellow);
+            graphic.setColor(Color.decode("#edddea"));
             graphic.fillRect(x, y, 2 * SingletonDataSrc.WIDTH, 2 * SingletonDataSrc.HEIGHT);
             graphic.setColor(Color.black);
             graphic.drawString(key, x+5, y+SingletonDataSrc.HEIGHT);
@@ -129,5 +129,27 @@ public class DrawPanel extends JPanel implements Observer {
             graphic.drawLine(coords[0], coords[1], ex1, ey1);
             graphic.drawLine(coords[0], coords[1], ex2, ey2);
         }
+        // for (int[] coords : SingletonDataSrc.arrows)
+        // {
+        //     int x1 = coords[0] ;
+        //     int y1 = coords[1] ;
+        //     int x2 = coords[2] ;
+        //     int y2 = coords[3] ;
+
+        //     double dx = x1 - x2;
+        //     double dy = y1 - y2;
+        //     double phi = Math.toRadians(40);
+        //     int barb = 20;
+        //     double theta = Math.atan2(dy, dx);
+        //     //System.out.println("theta = " + Math.toDegrees(theta));
+        //     double x, y, rho = theta + phi;
+        //     for(int j = 0; j < 2; j++)
+        // {
+        //     x = x1 - barb * Math.cos(rho);
+        //     y = y1 - barb * Math.sin(rho);
+        //     g.drawLine(x1, y1, (int)x, (int)y);
+        //     rho = theta - phi;
+        // }
+        // }
     }
 }

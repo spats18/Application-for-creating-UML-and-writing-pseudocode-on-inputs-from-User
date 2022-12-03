@@ -1,0 +1,76 @@
+boxes
+5
+class4
+346
+425
+class3
+429
+186
+class2
+216
+64
+class1
+214
+373
+shriya
+130
+120
+relation
+3
+160
+135
+184
+358
+186
+79
+244
+358
+399
+201
+376
+410
+triangles
+1
+160
+135
+-1
+9
+-1298
+diamonds
+2
+186
+79
+-1
+4
+-618
+376
+410
+1
+-9
+3794
+arrows
+0
+classList
+5
+class4
+3
+Class class4 {
+	class3 composeObject2= new class3( ) ;
+}
+class3
+2
+Class class3 {
+}
+class2
+3
+Class class2 {
+	class1 composeObject1= new class1( ) ;
+}
+class1
+2
+Class class1 extends shriya {
+}
+shriya
+2
+Class shriya {
+}

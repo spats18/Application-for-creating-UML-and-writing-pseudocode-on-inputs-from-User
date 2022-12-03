@@ -23,13 +23,13 @@ public class MenuController extends AbstractAction{
      *  If none of them are pressed then team information would be popped out for the information button under the help button.
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         if( ((JMenuItem) e.getSource()).getText().equals("Save") ){
-            try {
-                SingletonDataSrc.save();
-            } catch (FileNotFoundException e1) {
-                e1.printStackTrace();
-            }
+                try {
+                    SingletonDataSrc.save();
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                }
         }
         else if( ((JMenuItem) e.getSource()).getText().equals("Load") ){
             File folder = new File(SingletonDataSrc.folder);
@@ -37,7 +37,7 @@ public class MenuController extends AbstractAction{
             for(File file: folder.listFiles()){
                 String name= file.getName();
 
-                if(name.contains(".dat"))
+                if(name.contains(".txt"))
                     files.add(name);
             }
             String[] listOfFiles = new String[files.size()]; 
@@ -48,7 +48,11 @@ public class MenuController extends AbstractAction{
             int selection = JOptionPane.showOptionDialog(null, null," Choose a file", 0, 3, null, (Object[]) listOfFiles, null); 
             String file = listOfFiles[selection];
             System.out.print(file);
-            SingletonDataSrc.load(file);
+            try {
+                SingletonDataSrc.load(file);
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
         }
         else if( ((JMenuItem) e.getSource()).getText().equals("New") ){
             SingletonDataSrc.erase();
