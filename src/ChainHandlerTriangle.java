@@ -1,5 +1,8 @@
 package src;
 
+/**
+ *
+ */
 public class ChainHandlerTriangle extends ChainHandler{
     
     @Override

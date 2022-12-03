@@ -7,7 +7,10 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
+public class SingletonDataSrc extends Observable implements Serializable{
+
 public class SingletonDataSrc extends Observable{
+
     private static SingletonDataSrc instance;
     public static final String folder="/Users/spats/Documents/GitHub/Final-Project-564/";
     Map<String, int[]> boxes;// array size 2
