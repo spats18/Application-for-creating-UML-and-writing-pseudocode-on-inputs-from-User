@@ -1,0 +1,78 @@
+boxes
+5
+class4
+237
+403
+class3
+275
+437
+class2
+336
+316
+class1
+187
+344
+class0
+243
+124
+relation
+3
+213
+139
+217
+329
+273
+139
+306
+301
+306
+331
+305
+422
+triangles
+1
+273
+139
+-1
+4
+-923
+diamonds
+1
+213
+139
+-1
+47
+-9870
+arrows
+1
+306
+331
+-1
+-91
+28177
+classList
+5
+class4
+2
+Class class4 {
+}
+class3
+5
+Class class3 {
+	method1( ){
+			class2 assObject1 = new class2( ) ;
+ }
+}
+class2
+2
+Class class2 extends class0 {
+}
+class1
+2
+Class class1 {
+}
+class0
+3
+Class class0 {
+	class1 composeObject1= new class1( ) ;
+}
