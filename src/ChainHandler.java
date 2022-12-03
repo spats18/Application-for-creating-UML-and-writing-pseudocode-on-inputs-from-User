@@ -1,7 +1,8 @@
 package src;
 
 /**
- * ChainHandler is Abstract class
+ * This ChainHandler class is Abstract class
+ * It has setSuccessor and handler abstract methods.
  */
 public abstract class ChainHandler {
     protected ChainHandler successor;

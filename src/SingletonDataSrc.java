@@ -10,6 +10,10 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
+/**
+ * This SingletonDataSrc class extends the Observable class and implements the Serializable class.
+ *
+ */
 public class SingletonDataSrc extends Observable implements Serializable{
     private static SingletonDataSrc instance;
     public static final String folder="/Users/spats/Documents/GitHub/Final-Project-564/";
