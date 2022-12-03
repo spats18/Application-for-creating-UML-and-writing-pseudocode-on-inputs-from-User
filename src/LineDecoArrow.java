@@ -16,7 +16,7 @@ public class LineDecoArrow extends LineDecorator{
         
             ArrayList<String> toModify = SingletonDataSrc.getInstance().classList.get(c1);
             toModify.add(1," }");
-            toModify.add(1, "\t\t\t"+c2 +" assObject"+ (++SingletonDataSrc.getInstance().countAssociation)+ " = new "+ c2 +"( ) ;");
+            toModify.add(1, "\t\t\t"+c2 +" assocObject"+ (++SingletonDataSrc.getInstance().countAssociation)+ " = new "+ c2 +"( ) ;");
             toModify.add(1,"\tmethod"+ (SingletonDataSrc.getInstance().countAssociation)+ "( ){");
             SingletonDataSrc.getInstance().updateClassList(c1, toModify);
     }

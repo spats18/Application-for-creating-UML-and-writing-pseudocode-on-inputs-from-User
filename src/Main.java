@@ -29,7 +29,7 @@ class Main extends JFrame{
     }
 
     public Main(){
-        super("CSE564 Final Project");
+        super("UML class diagrams - CSE 564 || Final Project");
 
         menuBar = new JMenuBar();
         m1 = new JMenuItem("New");
