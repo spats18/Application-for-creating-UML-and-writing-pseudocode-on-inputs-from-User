@@ -188,7 +188,7 @@ public class SingletonDataSrc extends Observable{
         ReadObjectFromFile(folder + fileName);
         instance.notifying();
     }
-    public static void ReadObjectFromFile(String filepath) throws FileNotFoundException {
+    private static void ReadObjectFromFile(String filepath) throws FileNotFoundException {
 
         File file = new File(filepath);
         Scanner scanner = new Scanner(file);
