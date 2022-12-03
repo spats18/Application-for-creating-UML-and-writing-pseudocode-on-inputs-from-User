@@ -7,8 +7,6 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
-public class SingletonDataSrc extends Observable implements Serializable{
-
 public class SingletonDataSrc extends Observable{
 
     private static SingletonDataSrc instance;

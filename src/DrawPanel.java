@@ -73,7 +73,7 @@ public class DrawPanel extends JPanel implements Observer {
                 x3 = coords[0];         y3 = coords[1]-10;
             }
             Polygon tr = new Polygon(new int[] {x1, x2, x3}, new int[] {y1, y2, y3}, 3); 
-            graphic.setColor(Color.cyan);
+            graphic.setColor(Color.decode("#c8cacc"));
             graphic.fillPolygon(tr);
             graphic.setColor(Color.red);
             graphic.drawPolygon(tr);
