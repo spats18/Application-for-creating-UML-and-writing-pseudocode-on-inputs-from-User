@@ -1,6 +1,9 @@
 package src;
 
-
+/**
+ * This Strategy class is abstract class.
+ * It has algorithm and getChoice abstract methods
+ */
 abstract class Strategy extends Observable{
     String choice;
     int boxDirection;// icon at low = -1 (downward), high = 1 (upward)
