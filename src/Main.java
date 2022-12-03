@@ -61,10 +61,6 @@ class Main extends JFrame{
 
         cp = new CodePanel();
         dp = new DrawPanel(); 
-        JScrollPane scrollPane = new JScrollPane(cp.getPanel());    
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setVisible(true);
-
         Controller control = new Controller();
         dp.addMouseListener(control);
        
@@ -73,7 +69,7 @@ class Main extends JFrame{
         SingletonDataSrc.getInstance().addObserver(sp);
         SingletonDataSrc.getInstance().countAssociation = 0;
         SingletonDataSrc.getInstance().countComposition = 0;
-        midPanel.add(scrollPane);
+        midPanel.add(cp.getPanel());
         midPanel.add(dp.getPanel()); 
         root.add(midPanel, BorderLayout.CENTER);
         root.add(bottomPanel, BorderLayout.PAGE_END);
