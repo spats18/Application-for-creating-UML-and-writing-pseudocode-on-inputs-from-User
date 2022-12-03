@@ -1,80 +1,76 @@
 boxes
-4
+5
+class4
+346
+425
 class3
-311
-246
+429
+186
 class2
-247
-125
+216
+64
 class1
-161
-304
-class0
-108
-139
+214
+373
+shriya
+130
+120
 relation
-4
-138
-154
-131
-289
-217
-140
-191
-289
-281
-261
-191
-289
-217
-140
-138
-124
-triangles
-2
-191
-289
-1
--5
-1244
-217
-140
--1
-0
-124
-diamonds
-1
-281
-261
--1
-0
-289
-arrows
-1
-138
-154
--1
--19
-2778
-classList
-4
-class3
 3
+160
+135
+184
+358
+186
+79
+244
+358
+399
+201
+376
+410
+triangles
+1
+160
+135
+-1
+9
+-1298
+diamonds
+2
+186
+79
+-1
+4
+-618
+376
+410
+1
+-9
+3794
+arrows
+0
+classList
+5
+class4
+3
+Class class4 {
+	class3 composeObject2= new class3( ) ;
+}
+class3
+2
 Class class3 {
+}
+class2
+3
+Class class2 {
 	class1 composeObject1= new class1( ) ;
 }
-class2
-2
-Class class2 extends class1 {
-}
 class1
-5
-Class class1 {
-	method1( ){
-			class0 assObject1 = new class0( ) ;
- }
-}
-class0
 2
-Class class0 extends class2 {
+Class class1 extends shriya {
+}
+shriya
+2
+Class shriya {
 }
