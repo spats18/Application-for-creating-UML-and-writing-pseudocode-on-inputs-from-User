@@ -32,10 +32,7 @@ public class CodePanel extends JPanel implements Observer{
         //setBorder(BorderFactory.createLineBorder(Color.black));
         setBackground(Color.lightGray);
         setLayout(new FlowLayout());
-        JScrollPane scrollPane = new JScrollPane(this);    
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setVisible(true);
-
+        
         // JScrollPane scrollPane = new JScrollPane();
         // add(scrollPane, BorderLayout.CENTER); 
         // scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
