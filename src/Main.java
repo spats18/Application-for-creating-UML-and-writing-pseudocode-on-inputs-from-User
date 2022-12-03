@@ -63,7 +63,6 @@ class Main extends JFrame{
         dp = new DrawPanel(); 
         Controller control = new Controller();
         dp.addMouseListener(control);
-
        
         SingletonDataSrc.getInstance().addObserver(dp);
         SingletonDataSrc.getInstance().addObserver(cp);
@@ -72,8 +71,6 @@ class Main extends JFrame{
         SingletonDataSrc.getInstance().countComposition = 0;
         midPanel.add(cp.getPanel());
         midPanel.add(dp.getPanel()); 
-
-        //root.add(topPanel, BorderLayout.PAGE_START);
         root.add(midPanel, BorderLayout.CENTER);
         root.add(bottomPanel, BorderLayout.PAGE_END);
         add(root);
