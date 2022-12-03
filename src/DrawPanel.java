@@ -10,7 +10,7 @@ public class DrawPanel extends JPanel implements Observer {
     Line line;
 
     DrawPanel(){
-        setBackground(Color.cyan);
+        setBackground(Color.decode("#c8cacc"));
     }
 
     public JPanel getPanel(){
@@ -39,7 +39,7 @@ public class DrawPanel extends JPanel implements Observer {
             int[] coords = SingletonDataSrc.getInstance().boxes.get(key);
             int x = coords[0] - (SingletonDataSrc.WIDTH);
             int y = coords[1] - (SingletonDataSrc.HEIGHT);
-            graphic.setColor(Color.yellow);
+            graphic.setColor(Color.decode("#edddea"));
             graphic.fillRect(x, y, 2 * SingletonDataSrc.WIDTH, 2 * SingletonDataSrc.HEIGHT);
             graphic.setColor(Color.black);
             graphic.drawString(key, x+5, y+SingletonDataSrc.HEIGHT);

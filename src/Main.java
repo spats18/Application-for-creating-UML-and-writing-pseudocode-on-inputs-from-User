@@ -13,6 +13,7 @@ class Main extends JFrame{
     static DrawPanel dp;
     JPanel root;
     JPanel midPanel;
+    JScrollPane scroll;
     JPanel bottomPanel;
     JMenuBar menuBar;
     static JMenu file, help;
@@ -63,14 +64,20 @@ class Main extends JFrame{
         dp = new DrawPanel(); 
         Controller control = new Controller();
         dp.addMouseListener(control);
-       
+
         SingletonDataSrc.getInstance().addObserver(dp);
         SingletonDataSrc.getInstance().addObserver(cp);
         SingletonDataSrc.getInstance().addObserver(sp);
         SingletonDataSrc.getInstance().countAssociation = 0;
         SingletonDataSrc.getInstance().countComposition = 0;
-        midPanel.add(cp.getPanel());
-        midPanel.add(dp.getPanel()); 
+        cp.setPreferredSize(new Dimension((int) cp.getPreferredSize().getWidth() + 1000, (int)(cp.getPreferredSize().getHeight() + 3000)));
+        scroll = new JScrollPane(cp);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        midPanel.add(scroll);
+        midPanel.add(dp.getPanel());
+
+        //root.add(topPanel, BorderLayout.PAGE_START);
         root.add(midPanel, BorderLayout.CENTER);
         root.add(bottomPanel, BorderLayout.PAGE_END);
         add(root);
