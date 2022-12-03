@@ -81,6 +81,13 @@ class Main extends JFrame{
         SingletonDataSrc.getInstance().addObserver(sp);
         SingletonDataSrc.getInstance().countAssociation = 0;
         SingletonDataSrc.getInstance().countComposition = 0;
+	
+	midPanel.add(cp.getPanel());
+        cp.setPreferredSize(new Dimension((int) cp.getPreferredSize().getWidth() + 1000, (int)(cp.getPreferredSize().getHeight() + 3000)));
+        scroll = new JScrollPane(cp);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        midPanel.add(scroll);
 
         midPanel.add(dp.getPanel());
 
