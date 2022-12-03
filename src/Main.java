@@ -21,12 +21,23 @@ class Main extends JFrame{
     static final String[] ITEMS = new String[] {"New", "Save", "Load"};
     static final String[] MENUS = new String[] {"File", "Help"};
 
+    /**
+     * @param args default
+     * This main method creates gui with the help of Main method
+     */
     public static void main(String args[]){
         Main main = new Main();
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setSize(1000,1000);
 		main.setVisible(true);
     }
+
+    /**
+     *
+     *  This Main sets the parameters, sizes of panel and add to the GUI
+     *  GUI has mouse listener, panels, menu bar, and observers of draw panel and code panel
+     *
+     */
 
     public Main(){
         super("UML class diagrams - CSE 564 || Final Project");
@@ -70,11 +81,7 @@ class Main extends JFrame{
         SingletonDataSrc.getInstance().addObserver(sp);
         SingletonDataSrc.getInstance().countAssociation = 0;
         SingletonDataSrc.getInstance().countComposition = 0;
-        cp.setPreferredSize(new Dimension((int) cp.getPreferredSize().getWidth() + 1000, (int)(cp.getPreferredSize().getHeight() + 3000)));
-        scroll = new JScrollPane(cp);
-        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        midPanel.add(scroll);
+
         midPanel.add(dp.getPanel());
 
         //root.add(topPanel, BorderLayout.PAGE_START);

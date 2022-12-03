@@ -9,9 +9,19 @@ import javax.swing.AbstractAction;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+/**
+ *  This class controls the action which would be performed when user click the save, load and new button from menu bar.
+ */
 public class MenuController extends AbstractAction{
 
     static final String[] TEAM = new String[]{"Sannidhya", "Karan", "Aashka", "Sarthak", "Thy", "Darshan"};
+
+    /**
+     * @param e the event to be processed
+     * This actionPerformed method assigns the action for event load, new and save button.
+     *
+     *  If none of them are pressed then team information would be popped out for the information button under the help button.
+     */
     @Override
     public void actionPerformed(ActionEvent e){
         if( ((JMenuItem) e.getSource()).getText().equals("Save") ){
