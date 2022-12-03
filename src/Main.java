@@ -15,6 +15,7 @@ class Main extends JFrame{
     JPanel midPanel;
     JScrollPane scroll;
     JPanel bottomPanel;
+    StatusPanel sp;
     JMenuBar menuBar;
     static JMenu file, help;
     static JMenuItem m1, m2, m3, m4;
@@ -55,7 +56,7 @@ class Main extends JFrame{
         root.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         bottomPanel = new JPanel(new GridLayout(1,1,0,0)); 
-        StatusPanel sp = new StatusPanel();
+        sp = new StatusPanel();
         bottomPanel.add(sp.getPanel());
 
         midPanel = new JPanel(new GridLayout(1,2,5,0));

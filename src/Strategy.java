@@ -1,7 +1,7 @@
 package src;
 
 
-abstract class Strategy extends Observable{
+abstract class Strategy{
     String choice;
     int boxDirection;// icon at low = -1 (downward), high = 1 (upward)
     int xl, yl, xh, yh;
