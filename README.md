@@ -35,7 +35,7 @@ The chain of responsibility pattern was implemented where we have 3 handlers, on
 The decorator pattern was used to add the relation decorations to the base line. The decision from the chain handler was passed to the respective decorator class.
 
 ## Class Diagram
-![](Class%20Diagram1.png)
+![](Ouput/Class%20Diagram1.png)
 ## Output
 ![](Ouput/1.png)
 ![](Ouput/2.png)
