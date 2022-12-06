@@ -1,4 +1,4 @@
-# Application-for-creating-UML-and-writing-pseudocode-on-inputs-from-User
+# Application for creating UML and writing pseudocode on inputs from User
 The GUI based application has three panels to present user with the UML, Code and status. The user clicks on UML panel and types class name into pop-up box. The box for Class is drawn on the panel, and the appropriate pseudocode appears immediately in the code panel. The current status will be displayed in the status panel. When a user clicks on two boxes, a pop-up window will appear and prompt them to select a relationship. The selected relation will be depicted on a UML panel, and the appropriate class code will be modified to reflect the relation.
 
 Additional functionalities of the application include the ability to create a NEW UML and clean the panels. It offers a SAVE and LOAD functionality that allows you to save your code and UML for loading it again to continue working.
