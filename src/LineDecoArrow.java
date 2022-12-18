@@ -14,10 +14,10 @@ public class LineDecoArrow extends LineDecorator{
         else
             SingletonDataSrc.getInstance().addArrows(x2,y2, boxDirection, slope, yIntercept);
         
-            ArrayList<String> toModify = SingletonDataSrc.getInstance().classList.get(c1);
-            toModify.add(1," }");
-            toModify.add(1, "\t\t\t"+c2 +" assocObject"+ (++SingletonDataSrc.getInstance().countAssociation)+ " = new "+ c2 +"( ) ;");
-            toModify.add(1,"\tmethod"+ (SingletonDataSrc.getInstance().countAssociation)+ "( ){");
-            SingletonDataSrc.getInstance().updateClassList(c1, toModify);
+        ArrayList<String> toModify = SingletonDataSrc.getInstance().classList.get(c1);
+        toModify.add(1," }");
+        toModify.add(1, "\t\t\t"+c2 +" assocObject"+ (++SingletonDataSrc.getInstance().countAssociation)+ " = new "+ c2 +"( ) ;");
+        toModify.add(1,"\tmethod"+ (SingletonDataSrc.getInstance().countAssociation)+ "( ){");
+        SingletonDataSrc.getInstance().updateClassList(c1, toModify);
     }
 }

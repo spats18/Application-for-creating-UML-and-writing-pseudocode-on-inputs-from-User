@@ -42,7 +42,6 @@ class Main extends JFrame{
 
     public Main(){
         super("UML class diagrams - CSE 564 || Final Project");
-
         menuBar = new JMenuBar();
         m1 = new JMenuItem("New");
         m2 = new JMenuItem("Save");
@@ -83,7 +82,7 @@ class Main extends JFrame{
         SingletonDataSrc.getInstance().countAssociation = 0;
         SingletonDataSrc.getInstance().countComposition = 0;
 	
-	midPanel.add(cp.getPanel());
+	    midPanel.add(cp.getPanel());
         cp.setPreferredSize(new Dimension((int) cp.getPreferredSize().getWidth() + 1000, (int)(cp.getPreferredSize().getHeight() + 3000)));
         scroll = new JScrollPane(cp);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
